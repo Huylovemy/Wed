@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huy Script 🇻🇳 - Bear Hub</title>
+    <style>
+        /* === CẤU HÌNH MÀU SẮC (Theme Rinnegan Tím trên nền Đen) === */
+        :root {
+            --bg-color: #000000; /* Nền siêu đen hoàn toàn */
+            --text-color: #ffffff; /* CHỮ MÀU TRẮNG */
+            --section-title: #ffcc00; /* TIÊU ĐỀ MÀU VÀNG KIM */
+            
+            /* Màu tím chủ đạo */
+            --eye-color: #a855f7;
+            --eye-glow: rgba(168, 85, 247, 0.6);
+            
+            /* Nút bấm */
+            --button-bg: #1a0a20; /* Tím rất tối, gần như đen */
+            --button-border: var(--eye-color);
+            --button-text: #ffffff;
+            --button-hover: #2d1a3d;
+            
+            --accent-color: var(--eye-color);
+            --toast-bg: #1a0a20; 
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--bg-color); /* Sử dụng màu nền đen */
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Đã XÓA phần .bg-eyes-container để nền đen hoàn toàn */
+
+        /* Các phần tử nội dung */
+        .profile-container, .section-header, .buttons-container, #custom-toast {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-container {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1s ease-in;
+            margin-top: 20px; /* Reset lại khoảng cách vì không còn mắt nền */
+        }
+
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color); 
+            box-shadow: 0 0 15px var(--eye-glow);
+            margin-bottom: 10px;
+            background-color: #000;
+        }
+
+        .profile-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--section-title);
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+
+        .profile-desc {
+            font-size: 0.9rem;
+            color: #cccccc;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .section-header {
+            width: 100%;
+            max-width: 400px;
+            color: var(--section-title);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--section-title);
+            padding-bottom: 5px;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .link-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 14px;
+            text-align: center;
+            text-decoration: none;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: 1px solid var(--button-border);
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.2s;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .link-button:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-2px);
+            border-color: #d8b4fe; /* Tím sáng hơn khi hover */
+            box-shadow: 0 0 15px var(--eye-glow); 
+        }
+
+        .copy-btn {
+            background-color: #3b0764; /* Tím đậm đặc biệt */
+            border-color: #d8b4fe;
+            color: white;
+            box-shadow: 0 0 10px var(--eye-glow);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* === KHUNG THÔNG BÁO (TOAST) === */
+        #custom-toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--toast-bg);
+            color: #fff;
+            text-align: left;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            right: 20px;
+            top: 20px;
+            box-shadow: 0 4px 12px var(--eye-glow);
+            display: flex;
+            align-items: center;
+            border: 2px solid var(--accent-color);
+            opacity: 0;
+            transition: opacity 0.3s, top 0.3s;
+        }
+
+        #custom-toast.show {
+            visibility: visible;
+            opacity: 1;
+            top: 50px;
+        }
+
+        .toast-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid var(--accent-color);
+        }
+
+        .toast-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .toast-title {
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: var(--accent-color);
+        }
+
+        .toast-message {
+            font-size: 0.9rem;
+            color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <img src="https://i.postimg.cc/gjCPQGqY/IMG-1771689729732-1771948474726.jpg" alt="Huy Script Profile" class="profile-image">
+        <div class="profile-name">Huy Script 🇻🇳</div>
+        <div class="profile-desc">"Chủ yếu script ngon có trong Bear Hub"</div>
+    </div>
+
+    <div class="section-header">🔥 SCRIPT TỔNG HỢP (BEAR HUB)</div>
+    <div class="buttons-container">
+        <a href="https://link4m.com/CGva3" class="link-button" target="_blank">Bear Hub | Blox Fruits Tổng hợp</a>
+        <a href="https://link4m.com/PDmXdVBm" class="link-button" target="_blank">Bear Hub Premium | Tổng Hợp</a>
+        <a href="https://link4m.com/nze9byQI" class="link-button" target="_blank">Bear Hub Premium [BETA]</a>
+    </div>
+
+    <div class="section-header">📂 SCRIPT LẺ & KHÁC</div>
+    <div class="buttons-container">
+        
+        <div class="link-button copy-btn" onclick="copyScriptBan()">
+            ⚠️ Bấm để Copy Script Ban Siêu Nhanh
+        </div>
+
+        <a href="https://link4m.com/0kMUYw" class="link-button" target="_blank">Script Bear Hub Farm</a>
+        <a href="https://link4m.com/LuHiQ1H" class="link-button" target="_blank">Script CentuDox.xyz</a>
+        <a href="https://link4m.com/6r7uDpN" class="link-button" target="_blank">Script Onion13</a>
+        <a href="https://link4m.com/fzZOV" class="link-button" target="_blank">Script PvP có Aim Z God</a>
+        <a href="https://link4m.com/0AL7T" class="link-button" target="_blank">Hiru Hub Mới</a>
+        <a href="https://link4m.com/MBGgT0" class="link-button" target="_blank">Script PvP v2 (No Key)</a>
+        <a href="https://link4m.com/aqjF3bPo" class="link-button" target="_blank">Script 99 Night</a>
+        <a href="https://link4m.com/giO18" class="link-button" target="_blank">Script Redz New (Working)</a>
+        <a href="https://link4m.com/6VaT1" class="link-button" target="_blank">Teddy Hop Server (Key: teddyhubfreemium)</a>
+        <a href="https://link4m.com/bGkxZkd" class="link-button" target="_blank">Menu v2 + Hitbox</a>
+        <a href="https://link4m.com/G9MiT" class="link-button" target="_blank">Aurora Hub (Key: AURORA-BORA)</a>
+        <a href="https://link4m.com/NwwvkgnT" class="link-button" target="_blank">King Rùa 🐢</a>
+        <a href="https://link4m.com/t2N0xl" class="link-button" target="_blank">Menu v1</a>
+        <a href="https://link4m.com/ztDjxu" class="link-button" target="_blank">Script Đúp Rương</a>
+        <a href="https://link4m.com/4378Q" class="link-button" target="_blank">Script PvP New</a>
+        <a href="https://link4m.com/bLEQxr9" class="link-button" target="_blank">Banana Hub</a>
+        <a href="https://link4m.com/0Nvv2DE" class="link-button" target="_blank">Void Hub</a>
+        <a href="https://keysystem-three.vercel.app/" class="link-button" target="_blank">Link Key Night Hub Hop Sv</a>
+    </div>
+
+    <div id="custom-toast">
+        <img src="https://i.postimg.cc/gjCPQGqY/IMG-1771689729732-1771948474726.jpg" alt="Avatar" class="toast-avatar">
+        <div class="toast-content">
+            <div class="toast-title">Thành công!</div>
+            <div class="toast-message">Đã sao chép Script Ban Siêu Nhanh.</div>
+        </div>
+    </div>
+
+    <script>
+        function showToast() {
+            var toast = document.getElementById("custom-toast");
+            toast.className = "show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+
+        function copyScriptBan() {
+            const scriptText = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/Huylovemy/Kick/refs/heads/main/Banned"))()';
+            navigator.clipboard.writeText(scriptText).then(() => {
+                showToast();
+            }).catch(err => {
+                alert("Lỗi copy, vui lòng copy thủ công.");
+            });
+        }
+    </script>
+
+</body>
+</html>
