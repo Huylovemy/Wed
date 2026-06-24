@@ -3,260 +3,347 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Huy Script 🇻🇳 - Bear Hub</title>
+    <title>🔑 BEAR KEY SYSTEM</title>
     <style>
-        /* === CẤU HÌNH MÀU SẮC (Theme Rinnegan Tím trên nền Đen) === */
-        :root {
-            --bg-color: #000000; /* Nền siêu đen hoàn toàn */
-            --text-color: #ffffff; /* CHỮ MÀU TRẮNG */
-            --section-title: #ffcc00; /* TIÊU ĐỀ MÀU VÀNG KIM */
-            
-            /* Màu tím chủ đạo */
-            --eye-color: #a855f7;
-            --eye-glow: rgba(168, 85, 247, 0.6);
-            
-            /* Nút bấm */
-            --button-bg: #1a0a20; /* Tím rất tối, gần như đen */
-            --button-border: var(--eye-color);
-            --button-text: #ffffff;
-            --button-hover: #2d1a3d;
-            
-            --accent-color: var(--eye-color);
-            --toast-bg: #1a0a20; 
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0a1a, #1a1a3e);
             min-height: 100vh;
-            background-color: var(--bg-color); /* Sử dụng màu nền đen */
-            color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Các phần tử nội dung */
-        .profile-container, .section-header, .buttons-container, #custom-toast {
-            position: relative;
-            z-index: 1;
-        }
-
-        .profile-container {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            animation: fadeIn 1s ease-in;
-            margin-top: 20px;
-        }
-
-        .profile-image {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent-color); 
-            box-shadow: 0 0 15px var(--eye-glow);
-            margin-bottom: 10px;
-            background-color: #000;
-        }
-
-        .profile-name {
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--section-title);
-            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
-        }
-
-        .profile-desc {
-            font-size: 0.9rem;
-            color: #cccccc;
-            margin-top: 5px;
-            font-style: italic;
-        }
-
-        .section-header {
-            width: 100%;
-            max-width: 400px;
-            color: var(--section-title);
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            border-bottom: 2px solid var(--section-title);
-            padding-bottom: 5px;
-        }
-
-        .buttons-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .link-button {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100%;
-            padding: 14px;
-            text-align: center;
-            text-decoration: none;
-            background-color: var(--button-bg);
-            color: var(--button-text);
-            border: 1px solid var(--button-border);
-            border-radius: 10px;
-            font-weight: 600;
-            transition: all 0.2s;
-            box-sizing: border-box;
-            cursor: pointer;
-        }
-
-        .link-button:hover {
-            background-color: var(--button-hover);
-            transform: translateY(-2px);
-            border-color: #d8b4fe; /* Tím sáng hơn khi hover */
-            box-shadow: 0 0 15px var(--eye-glow); 
-        }
-
-        .copy-btn {
-            background-color: #3b0764; /* Tím đậm đặc biệt */
-            border-color: #d8b4fe;
             color: white;
-            box-shadow: 0 0 10px var(--eye-glow);
+            padding: 20px;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .container {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            width: 600px;
+            max-width: 100%;
         }
-
-        /* === KHUNG THÔNG BÁO (TOAST) === */
-        #custom-toast {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: var(--toast-bg);
-            color: #fff;
-            text-align: left;
-            border-radius: 8px;
-            padding: 16px;
-            position: fixed;
-            z-index: 1000;
-            right: 20px;
-            top: 20px;
-            box-shadow: 0 4px 12px var(--eye-glow);
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { font-size: 32px; background: linear-gradient(135deg, #6c63ff, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header p { color: #888; margin-top: 5px; }
+        
+        .input-group {
             display: flex;
-            align-items: center;
-            border: 2px solid var(--accent-color);
-            opacity: 0;
-            transition: opacity 0.3s, top 0.3s;
+            gap: 10px;
+            margin-bottom: 15px;
         }
-
-        #custom-toast.show {
-            visibility: visible;
-            opacity: 1;
-            top: 50px;
+        .input-group input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-size: 14px;
+            outline: none;
         }
-
-        .toast-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-right: 15px;
-            border: 2px solid var(--accent-color);
-        }
-
-        .toast-content {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .toast-title {
+        .input-group input:focus { border-color: #6c63ff; }
+        .input-group input::placeholder { color: #666; }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 10px;
             font-weight: bold;
-            font-size: 1rem;
-            margin-bottom: 4px;
-            color: var(--accent-color);
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
         }
-
-        .toast-message {
-            font-size: 0.9rem;
-            color: #cccccc;
+        .btn-primary { background: linear-gradient(135deg, #6c63ff, #8b83ff); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(108,99,255,0.3); }
+        .btn-success { background: linear-gradient(135deg, #51cf66, #69db7c); color: white; }
+        .btn-success:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(81,207,102,0.3); }
+        .btn-danger { background: linear-gradient(135deg, #ff6b6b, #ff8e8e); color: white; }
+        .btn-danger:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(255,107,107,0.3); }
+        .btn-sm { padding: 6px 12px; font-size: 12px; }
+        
+        .result {
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+        }
+        .result.success { display: block; background: rgba(0,255,0,0.1); color: #51cf66; border: 1px solid rgba(0,255,0,0.2); }
+        .result.error { display: block; background: rgba(255,0,0,0.1); color: #ff6b6b; border: 1px solid rgba(255,0,0,0.2); }
+        .result.info { display: block; background: rgba(108,99,255,0.1); color: #6c63ff; border: 1px solid rgba(108,99,255,0.2); }
+        
+        .key-list {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .key-list::-webkit-scrollbar { width: 6px; }
+        .key-list::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
+        .key-list::-webkit-scrollbar-thumb { background: #6c63ff; border-radius: 10px; }
+        
+        .key-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            border-left: 3px solid #6c63ff;
+        }
+        .key-item.expired { border-left-color: #ff6b6b; opacity: 0.5; }
+        .key-item .key-code { font-weight: bold; font-family: monospace; font-size: 14px; }
+        .key-item .key-info { font-size: 12px; color: #888; }
+        .key-item .key-status { font-size: 12px; padding: 3px 10px; border-radius: 20px; }
+        .key-item .key-status.active { background: rgba(0,255,0,0.2); color: #51cf66; }
+        .key-item .key-status.expired { background: rgba(255,0,0,0.2); color: #ff6b6b; }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .stats span { font-size: 13px; color: #888; }
+        .stats strong { color: white; }
+        
+        .empty-state { text-align: center; padding: 40px 20px; color: #666; }
+        .empty-state .icon { font-size: 48px; margin-bottom: 10px; }
+        
+        .api-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .api-info .label { color: #888; font-size: 12px; }
+        .api-link-box {
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 5px;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 12px;
+            color: #6c63ff;
         }
     </style>
 </head>
 <body>
-
-    <div class="profile-container">
-        <img src="https://i.postimg.cc/gjCPQGqY/IMG-1771689729732-1771948474726.jpg" alt="Huy Script Profile" class="profile-image">
-        <div class="profile-name">Huy Script 🇻🇳</div>
-        <div class="profile-desc">"Chủ yếu script ngon có trong Bear Hub"</div>
-    </div>
-
-    <div class="section-header">🔥 SCRIPT TỔNG HỢP (BEAR HUB)</div>
-    <div class="buttons-container">
-        <a href="https://link4m.com/CGva3" class="link-button" target="_blank">Bear Hub | Blox Fruits Tổng hợp</a>
-        <a href="https://link4m.com/PDmXdVBm" class="link-button" target="_blank">Bear Hub Premium | Tổng Hợp</a>
-        <a href="https://link4m.com/nze9byQI" class="link-button" target="_blank">Bear Hub Premium [BETA]</a>
-    </div>
-
-    <div class="section-header">📂 SCRIPT LẺ & KHÁC</div>
-    <div class="buttons-container">
-        
-        <a href="https://link4m.com/7XQpztD" class="link-button" target="_blank">Bear Hub (Blox Fruits)</a>
-        
-        <div class="link-button copy-btn" onclick="copyScriptBan()">
-            ⚠️ Bấm để Copy Script Ban Siêu Nhanh
+    <div class="container">
+        <div class="header">
+            <h1>🔑 BEAR KEY SYSTEM</h1>
+            <p>Tạo key và kiểm tra key</p>
         </div>
 
-        <a href="https://link4m.com/0kMUYw" class="link-button" target="_blank">Script Bear Hub Farm</a>
-        <a href="https://link4m.com/LuHiQ1H" class="link-button" target="_blank">Script CentuDox.xyz</a>
-        <a href="https://link4m.com/6r7uDpN" class="link-button" target="_blank">Script Onion13</a>
-        <a href="https://link4m.com/fzZOV" class="link-button" target="_blank">Script PvP có Aim Z God</a>
-        <a href="https://link4m.com/0AL7T" class="link-button" target="_blank">Hiru Hub Mới</a>
-        <a href="https://link4m.com/MBGgT0" class="link-button" target="_blank">Script PvP v2 (No Key)</a>
-        <a href="https://link4m.com/aqjF3bPo" class="link-button" target="_blank">Script 99 Night</a>
-        <a href="https://link4m.com/giO18" class="link-button" target="_blank">Script Redz New (Working)</a>
-        <a href="https://link4m.com/6VaT1" class="link-button" target="_blank">Teddy Hop Server (Key: teddyhubfreemium)</a>
-        <a href="https://link4m.com/bGkxZkd" class="link-button" target="_blank">Menu v2 + Hitbox</a>
-        <a href="https://link4m.com/G9MiT" class="link-button" target="_blank">Aurora Hub (Key: AURORA-BORA)</a>
-        <a href="https://link4m.com/NwwvkgnT" class="link-button" target="_blank">King Rùa 🐢</a>
-        <a href="https://link4m.com/t2N0xl" class="link-button" target="_blank">Menu v1</a>
-        <a href="https://link4m.com/ztDjxu" class="link-button" target="_blank">Script Đúp Rương</a>
-        <a href="https://link4m.com/4378Q" class="link-button" target="_blank">Script PvP New</a>
-        <a href="https://link4m.com/bLEQxr9" class="link-button" target="_blank">Banana Hub</a>
-        <a href="https://link4m.com/0Nvv2DE" class="link-button" target="_blank">Void Hub</a>
-        <a href="https://keysystem-three.vercel.app/" class="link-button" target="_blank">Link Key Night Hub Hop Sv</a>
-    </div>
+        <div class="stats">
+            <span>📊 Tổng key: <strong id="totalKeys">0</strong></span>
+            <span>🟢 Còn hạn: <strong id="activeKeys">0</strong></span>
+            <span>🔴 Hết hạn: <strong id="expiredKeys">0</strong></span>
+        </div>
 
-    <div id="custom-toast">
-        <img src="https://i.postimg.cc/gjCPQGqY/IMG-1771689729732-1771948474726.jpg" alt="Avatar" class="toast-avatar">
-        <div class="toast-content">
-            <div class="toast-title">Thành công!</div>
-            <div class="toast-message">Đã sao chép Script Ban Siêu Nhanh.</div>
+        <div class="input-group">
+            <input type="text" id="keyInput" placeholder="Nhập key để kiểm tra..." onkeydown="if(event.key==='Enter') checkKey()">
+            <button class="btn btn-primary" onclick="checkKey()">🔍 Kiểm tra</button>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+            <button class="btn btn-success" onclick="generateKey()" style="flex:1;">🎲 Tạo Key (7 ngày)</button>
+            <button class="btn btn-danger" onclick="clearAllKeys()" style="flex:0.5;">🗑️ Xóa hết</button>
+        </div>
+
+        <div id="result" class="result"></div>
+
+        <h3 style="margin: 20px 0 10px; font-size: 16px; color: #888;">📋 Danh sách key</h3>
+        <div id="keyList" class="key-list">
+            <div class="empty-state">
+                <div class="icon">🔑</div>
+                <p>Chưa có key nào</p>
+            </div>
+        </div>
+
+        <div class="api-info">
+            <div class="label">🔗 API cho Roblox (copy link này vào script):</div>
+            <div class="api-link-box" id="apiLink">Đang tải...</div>
+            <button class="btn btn-primary btn-sm" onclick="copyApiLink()" style="margin-top: 10px;">📋 Copy link API</button>
         </div>
     </div>
 
     <script>
-        function showToast() {
-            var toast = document.getElementById("custom-toast");
-            toast.className = "show";
-            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        // ===== QUẢN LÝ KEY =====
+        let keys = JSON.parse(localStorage.getItem('bear_keys')) || {};
+
+        function saveKeys() {
+            localStorage.setItem('bear_keys', JSON.stringify(keys));
+            updateUI();
         }
 
-        function copyScriptBan() {
-            const scriptText = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/Huylovemy/Kick/refs/heads/main/Banned"))()';
-            navigator.clipboard.writeText(scriptText).then(() => {
-                showToast();
-            }).catch(err => {
-                alert("Lỗi copy, vui lòng copy thủ công.");
-            });
+        function generateKey() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let key = '';
+            for (let i = 0; i < 10; i++) {
+                key += chars[Math.floor(Math.random() * chars.length)];
+            }
+            
+            const expiry = new Date();
+            expiry.setDate(expiry.getDate() + 7);
+            
+            keys[key] = {
+                created: new Date().toISOString(),
+                expiry: expiry.toISOString(),
+                used: false
+            };
+            
+            saveKeys();
+            showResult('✅ Đã tạo key: <strong>' + key + '</strong><br>⏰ Hết hạn: ' + formatDate(expiry), 'success');
+            
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(key);
+            }
+            
+            return key;
+        }
+
+        function checkKey() {
+            const input = document.getElementById('keyInput');
+            const key = input.value.trim().toUpperCase();
+            
+            if (!key) {
+                showResult('⚠ Vui lòng nhập key!', 'error');
+                return;
+            }
+            
+            if (!keys[key]) {
+                showResult('❌ Key <strong>' + key + '</strong> không tồn tại!', 'error');
+                return;
+            }
+            
+            const now = new Date();
+            const expiry = new Date(keys[key].expiry);
+            
+            if (now > expiry) {
+                showResult('⏰ Key <strong>' + key + '</strong> đã hết hạn!', 'error');
+                return;
+            }
+            
+            showResult('✅ Key <strong>' + key + '</strong> hợp lệ!', 'success');
+        }
+
+        function formatDate(date) {
+            return date.toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        }
+
+        function showResult(message, type) {
+            const result = document.getElementById('result');
+            result.className = 'result ' + type;
+            result.innerHTML = message;
+            setTimeout(() => { result.className = 'result'; }, 5000);
+        }
+
+        function clearAllKeys() {
+            if (confirm('Xóa tất cả key?')) {
+                keys = {};
+                saveKeys();
+                showResult('🗑️ Đã xóa tất cả key!', 'info');
+            }
+        }
+
+        function updateUI() {
+            const keyList = document.getElementById('keyList');
+            const totalKeys = Object.keys(keys).length;
+            
+            document.getElementById('totalKeys').textContent = totalKeys;
+            
+            const now = new Date();
+            let active = 0, expired = 0;
+            
+            if (totalKeys === 0) {
+                keyList.innerHTML = '<div class="empty-state"><div class="icon">🔑</div><p>Chưa có key nào</p></div>';
+                document.getElementById('activeKeys').textContent = '0';
+                document.getElementById('expiredKeys').textContent = '0';
+                return;
+            }
+            
+            let html = '';
+            for (const [key, data] of Object.entries(keys)) {
+                const expiry = new Date(data.expiry);
+                const isExpired = now > expiry;
+                
+                if (isExpired) expired++;
+                else active++;
+                
+                html += `
+                    <div class="key-item ${isExpired ? 'expired' : ''}">
+                        <div>
+                            <div class="key-code">${key}</div>
+                            <div class="key-info">📅 Hết hạn: ${formatDate(expiry)}</div>
+                        </div>
+                        <span class="key-status ${isExpired ? 'expired' : 'active'}">
+                            ${isExpired ? '🔴 Hết hạn' : '🟢 Còn hạn'}
+                        </span>
+                    </div>
+                `;
+            }
+            
+            keyList.innerHTML = html;
+            document.getElementById('activeKeys').textContent = active;
+            document.getElementById('expiredKeys').textContent = expired;
+        }
+
+        // ===== API CHO ROBLOX =====
+        function handleApiRequest() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const checkKey = urlParams.get('key');
+            
+            if (checkKey) {
+                const now = new Date();
+                let result = 'invalid';
+                
+                if (keys[checkKey]) {
+                    const expiry = new Date(keys[checkKey].expiry);
+                    if (now <= expiry) {
+                        result = 'valid';
+                    }
+                }
+                
+                document.body.innerHTML = result;
+                document.body.style.display = 'flex';
+                document.body.style.justifyContent = 'center';
+                document.body.style.alignItems = 'center';
+                document.body.style.height = '100vh';
+                document.body.style.background = '#0a0a1a';
+                document.body.style.color = '#51cf66';
+                document.body.style.fontSize = '32px';
+                document.body.style.fontFamily = 'monospace';
+                document.body.style.fontWeight = 'bold';
+                return true;
+            }
+            return false;
+        }
+
+        function updateApiLink() {
+            const link = window.location.href.split('?')[0] + '?key=YOUR_KEY_HERE';
+            document.getElementById('apiLink').textContent = link;
+        }
+
+        function copyApiLink() {
+            const link = document.getElementById('apiLink').textContent;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(link);
+                showResult('📋 Đã copy link API!', 'success');
+            }
+        }
+
+        // ===== KHỞI TẠO =====
+        if (!handleApiRequest()) {
+            updateUI();
+            updateApiLink();
         }
     </script>
-
 </body>
 </html>
