@@ -1,1751 +1,668 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
-
+<html lang="vi">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:image" content="https://github.com/7yd7/Hub4V/blob/Menu/Assets/icon/I-7yd7Logo.png?raw=true" />
-    <meta property="og:image:width" content="420" />
-    <meta property="og:image:height" content="178" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Want to know more games? Click here." />
-    <meta property="og:site_name" content="7yd7" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://github.com/7yd7/Hub4V/blob/Menu/Assets/icon/I-7yd7Logo.png?raw=true" />
-    <meta name="description" content="Script Hub Games Roblox">
-    <title>7yd7</title>
-    <link rel="icon" type="image/png" href="https://github.com/7yd7/Hub4V/blob/Menu/Assets/icon/I-7yd7.png?raw=true">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <title>Bear Hub - Blox Fruits</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        *,
-        *::before,
-        *::after {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        :root {
-            --font: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            --radius: 16px;
-            --radius-sm: 10px;
-            --transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        [data-theme="dark"] {
-            --bg-body: #08080a;
-            --bg-card: #111115;
-            --bg-card-border: rgba(255, 255, 255, 0.05);
-            --bg-field: #060608;
-            --bg-field-border: rgba(255, 255, 255, 0.07);
-            --text-primary: #f3f3f5;
-            --text-secondary: #9494a1;
-            --text-muted: #5c5c66;
-            --accent: #a78bfa;
-            --copy-btn-bg: rgba(255, 255, 255, 0.04);
-            --copy-btn-hover: rgba(255, 255, 255, 0.08);
-            --logo-filter: brightness(0) invert(1);
-            --toggle-bg: rgba(255, 255, 255, 0.04);
-            --toggle-hover: rgba(255, 255, 255, 0.08);
-            --glow: rgba(167, 139, 250, 0.05);
-            --cat-bg: rgba(255, 255, 255, 0.03);
-            --cat-bg-active: var(--accent);
-            --cat-text: var(--text-secondary);
-            --cat-text-active: #fff;
-            --skeleton: rgba(255, 255, 255, 0.04);
-            --skeleton-shine: rgba(255, 255, 255, 0.08);
-            --bg-elev: rgba(255, 255, 255, 0.02);
-            --line-soft: rgba(255, 255, 255, 0.04);
-        }
-
-        [data-theme="light"] {
-            --bg-body: #f5f5f8;
-            --bg-card: #ffffff;
-            --bg-card-border: rgba(0, 0, 0, 0.06);
-            --bg-field: #f0f0f4;
-            --bg-field-border: rgba(0, 0, 0, 0.08);
-            --text-primary: #0f0f12;
-            --text-secondary: #656573;
-            --text-muted: #92929f;
-            --accent: #7c3aed;
-            --copy-btn-bg: rgba(0, 0, 0, 0.03);
-            --copy-btn-hover: rgba(0, 0, 0, 0.06);
-            --logo-filter: brightness(0);
-            --toggle-bg: rgba(0, 0, 0, 0.04);
-            --toggle-hover: rgba(0, 0, 0, 0.08);
-            --glow: rgba(124, 58, 237, 0.04);
-            --cat-bg: rgba(0, 0, 0, 0.03);
-            --cat-bg-active: var(--accent);
-            --cat-text: var(--text-secondary);
-            --cat-text-active: #fff;
-            --skeleton: rgba(0, 0, 0, 0.04);
-            --skeleton-shine: rgba(0, 0, 0, 0.08);
-            --bg-elev: rgba(0, 0, 0, 0.015);
-            --line-soft: rgba(0, 0, 0, 0.05);
-        }
-
-        html {
-            height: 100%;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
         }
 
         body {
-            min-height: 100%;
-            font-family: var(--font);
-            background: var(--bg-body);
-            color: var(--text-primary);
-            transition: background var(--transition), color var(--transition);
-            -webkit-font-smoothing: antialiased;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 120px 24px 40px;
+            background: #0a0a0a;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            transition: all 0.4s ease;
+        }
+
+        body.light-mode {
+            background: #f5f7fa;
+        }
+
+        body.light-mode .header h1 .brand-name {
+            color: #1a1a2e;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .header p {
+            color: #4a4a6a;
+        }
+
+        body.light-mode .main-tab {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            box-shadow: 0 8px 32px rgba(26, 115, 232, 0.3);
+        }
+
+        body.light-mode .main-tab:hover {
+            box-shadow: 0 12px 40px rgba(26, 115, 232, 0.5);
+        }
+
+        body.light-mode .main-tab.active {
+            background: linear-gradient(135deg, #1565c0, #0a3d7a);
+            box-shadow: 0 8px 32px rgba(26, 115, 232, 0.5);
+        }
+
+        body.light-mode .category-group {
+            background: #e8f0fe;
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .category-group .category-title {
+            color: #1a1a2e;
+        }
+
+        body.light-mode .sub-category-item {
+            background: #dce8f5;
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        body.light-mode .sub-category-item .name {
+            color: #1a1a2e;
+        }
+
+        body.light-mode .sub-category-item:hover {
+            background: #c5d8ed;
+            border-color: #1a73e8;
+        }
+
+        body.light-mode .footer-note {
+            color: #6a6a8a;
+        }
+
+        body.light-mode .back-button {
+            background: rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.15);
+            color: #1a1a2e;
+        }
+
+        body.light-mode .back-button:hover {
+            background: rgba(0, 0, 0, 0.15);
+            border-color: #1a73e8;
+        }
+
+        body.light-mode .social-btn {
+            background: rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.15);
+            color: #1a1a2e;
+        }
+
+        body.light-mode .social-btn:hover {
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        body.light-mode .theme-toggle {
+            background: rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.15);
+            color: #1a1a2e;
+        }
+
+        body.light-mode .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.15);
+            border-color: #1a73e8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
             position: relative;
         }
 
-        html {
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent) var(--bg-card);
-        }
-
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-card);
-            border-radius: 999px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, var(--accent), #34d399);
-            border-radius: 999px;
-            border: 2px solid var(--bg-card);
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            filter: brightness(1.08);
-        }
-
-        .bg-glow-container {
+        .top-right-buttons {
             position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .bg-glow-1 {
-            position: absolute;
-            top: -10%;
-            left: 20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(167, 139, 250, 0.12) 0%, transparent 70%);
-            filter: blur(80px);
-            animation: floatGlow1 20s infinite alternate ease-in-out;
-        }
-
-        .bg-glow-2 {
-            position: absolute;
-            bottom: -10%;
-            right: 15%;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(52, 211, 153, 0.08) 0%, transparent 70%);
-            filter: blur(100px);
-            animation: floatGlow2 25s infinite alternate ease-in-out;
-        }
-
-        .bg-mesh {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(var(--line-soft) 1px, transparent 1px),
-                linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-            background-size: 40px 40px;
-            opacity: 0.16;
-            mask-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 30%), black 20%, transparent 80%);
-            transition: mask-image 0.1s ease;
-        }
-
-        @keyframes floatGlow1 {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            50% {
-                transform: translate(60px, 40px) scale(1.08);
-            }
-
-            100% {
-                transform: translate(-30px, 80px) scale(0.96);
-            }
-        }
-
-        @keyframes floatGlow2 {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            50% {
-                transform: translate(-50px, -40px) scale(0.92);
-            }
-
-            100% {
-                transform: translate(40px, 30px) scale(1.04);
-            }
-        }
-
-        .app-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 72px;
+            top: 20px;
+            right: 20px;
             display: flex;
+            gap: 10px;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 32px;
-            z-index: 100;
-            background: color-mix(in srgb, var(--bg-body) 70%, transparent);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--bg-card-border);
-            transition: transform 0.35s ease, opacity 0.3s ease;
+            z-index: 1000;
         }
 
-        .top-ui-hidden .app-header,
-        .features-open .app-header {
-            transform: translateY(-100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .header-left,
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex: 1;
-        }
-
-        .header-right {
-            justify-content: flex-end;
-            gap: 16px;
-        }
-
-        .header-nav {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex: 2;
-            justify-content: center;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-secondary);
-            font-size: 14px;
-            font-weight: 500;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: var(--radius-sm);
-            transition: color var(--transition), background var(--transition);
-        }
-
-        .nav-item:hover {
-            color: var(--text-primary);
-            background: var(--toggle-hover);
-        }
-
-        .nav-item.active {
-            color: var(--accent);
-            position: relative;
-        }
-
-        .nav-item.active::after {
-            content: '';
-            position: absolute;
-            bottom: -19px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--accent);
-            border-radius: 2px 2px 0 0;
-        }
-
-        .nav-item svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            width: 38px;
-            height: 38px;
-            filter: var(--logo-filter);
-            transition: filter var(--transition);
-        }
-
-        .theme-toggle,
-        .discord-btn,
-        .profile-btn {
-            width: 40px;
-            height: 40px;
+        .social-btn {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.05);
             border-radius: 50%;
-            border: 1px solid var(--bg-card-border);
-            background: var(--toggle-bg);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background var(--transition), transform 0.2s ease, opacity 0.3s ease;
-            color: var(--text-secondary);
-            text-decoration: none;
-        }
-
-        .discord-btn:hover,
-        .theme-toggle:hover,
-        .profile-btn:hover {
-            background: var(--toggle-hover);
-            transform: scale(1.05);
-            color: var(--text-primary);
-        }
-
-        .discord-btn:active,
-        .theme-toggle:active,
-        .profile-btn:active {
-            transform: scale(0.95);
-        }
-
-        .discord-btn svg,
-        .profile-btn svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .discord-btn img {
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-            display: block;
-            filter: var(--logo-filter);
-            transition: filter var(--transition);
-        }
-
-        .theme-toggle svg {
-            width: 18px;
-            height: 18px;
-            transition: opacity 0.2s ease, transform 0.3s ease;
-        }
-
-        .theme-toggle .icon-sun,
-        .theme-toggle .icon-moon {
-            position: absolute;
-        }
-
-        [data-theme="dark"] .theme-toggle .icon-sun {
-            opacity: 1;
-            transform: rotate(0);
-        }
-
-        [data-theme="dark"] .theme-toggle .icon-moon {
-            opacity: 0;
-            transform: rotate(-90deg);
-        }
-
-        [data-theme="light"] .theme-toggle .icon-sun {
-            opacity: 0;
-            transform: rotate(90deg);
-        }
-
-        [data-theme="light"] .theme-toggle .icon-moon {
-            opacity: 1;
-            transform: rotate(0);
-        }
-
-        .main {
-            width: min(1400px, calc(100vw - 48px));
-            z-index: 1;
-        }
-
-        .card {
-            width: 100%;
-            background: linear-gradient(145deg, color-mix(in srgb, var(--bg-card) 86%, transparent), var(--bg-card));
-            border: 1px solid var(--bg-card-border);
-            border-radius: var(--radius);
-            padding: 24px;
-            transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
-            animation: fadeInUp 0.6s ease 0.1s both;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(120deg, transparent 0%, var(--bg-elev) 45%, transparent 100%);
-            pointer-events: none;
-        }
-
-        [data-theme="dark"] .card {
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.15);
-        }
-
-        [data-theme="light"] .card {
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.04);
-        }
-
-
-
-        .copy-field {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: color-mix(in srgb, var(--bg-card) 70%, transparent);
-            border: 1px solid var(--bg-card-border);
-            border-radius: 999px;
-            overflow: hidden;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s ease;
-            padding: 16px 24px;
-            margin: 0 auto 32px auto;
-            max-width: 600px;
-            cursor: pointer;
-            position: relative;
-            animation: fadeInUp 0.6s ease 0.15s both;
-        }
-
-        .copy-field:hover {
-            border-color: rgba(167, 139, 250, 0.3);
-            background: color-mix(in srgb, var(--bg-card) 70%, transparent);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(167, 139, 250, 0.1);
-        }
-
-        .copy-field:active {
-            opacity: 0.8;
-            transform: translateY(1px);
-        }
-
-        .copy-field code {
-            font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-            font-size: 14.5px;
-            font-weight: 500;
-            color: #e2e8f0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            user-select: none;
-            letter-spacing: 0.3px;
-            transition: opacity 0.2s, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .copy-field .icon-check {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0.5);
-            width: 28px;
-            height: 28px;
-            color: #34d399;
-            opacity: 0;
-            transition: opacity 0.2s, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            pointer-events: none;
-        }
-
-        .copy-field.copied {
-            border-color: #34d399;
-            box-shadow: 0 0 15px rgba(52, 211, 153, 0.2);
-            background: linear-gradient(90deg, rgba(30, 41, 59, 0.4), rgba(6, 78, 59, 0.4));
-        }
-
-        .copy-field.copied code {
-            opacity: 0;
-            transform: scale(0.9);
-        }
-
-        .copy-field.copied .icon-check {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        [data-theme="light"] .copy-field {
-            background: color-mix(in srgb, var(--bg-card) 70%, transparent);
-            border: 1px solid var(--bg-card-border);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        [data-theme="light"] .copy-field:hover {
-            border-color: rgba(124, 58, 237, 0.3);
-            background: color-mix(in srgb, var(--bg-card) 70%, transparent);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 15px rgba(124, 58, 237, 0.1);
-        }
-
-        [data-theme="light"] .copy-field code {
-            color: #0f0f12;
-        }
-
-        [data-theme="light"] .copy-field.copied {
-            background: linear-gradient(90deg, rgba(209, 250, 229, 0.5), rgba(167, 243, 208, 0.6));
-            border-color: #34d399;
-        }
-
-        .games-section {
-            margin-top: 28px;
-            animation: fadeInUp 0.6s ease 0.2s both;
-        }
-
-        .discover-card {
-            margin: 0 auto 22px auto;
-            max-width: 760px;
-            border-radius: 14px;
-            border: 1px solid var(--bg-card-border);
-            background: linear-gradient(145deg, color-mix(in srgb, var(--bg-card) 90%, transparent), var(--bg-card));
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
-            animation: fadeInUp 0.6s ease 0.18s both;
-        }
-
-        .discover-link {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            padding: 16px;
-            transition: background var(--transition);
-        }
-
-        .discover-link:hover {
-            background: color-mix(in srgb, var(--accent) 8%, transparent);
-        }
-
-        .discover-title {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .discover-desc {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 14px;
-            line-height: 1.4;
-        }
-
-        .discover-image-wrap {
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid var(--bg-card-border);
-            background: color-mix(in srgb, var(--bg-field) 86%, transparent);
-        }
-
-        .discover-image {
-            width: 100%;
-            height: 220px;
-            object-fit: contain;
-            display: block;
-            padding: 14px;
-        }
-
-        .games-section .section-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-            text-align: center;
-        }
-
-        .global-search-container {
-            margin-bottom: 32px;
-            display: flex;
-            justify-content: center;
-            animation: fadeInUp 0.5s ease 0.1s both;
-        }
-
-        .global-search-wrap {
-            position: relative;
-            width: 100%;
-            max-width: 680px;
-            display: flex;
-            align-items: center;
-        }
-
-        .global-search-wrap svg {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            color: var(--text-muted);
-            pointer-events: none;
-        }
-
-        .global-search-input {
-            width: 100%;
-            padding: 16px 20px 16px 52px;
-            background: color-mix(in srgb, var(--bg-card) 70%, transparent);
-            border: 1px solid var(--bg-card-border);
-            border-radius: 999px;
-            color: var(--text-primary);
-            font-family: var(--font);
-            font-size: 15px;
-            outline: none;
-            transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .global-search-input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .global-search-input:focus {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
-        }
-
-        #executorsBgContainer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.25;
-        }
-
-        .floating-executor {
-            position: absolute;
-            border-radius: 50%;
-            object-fit: cover;
-            filter: sepia(0.3) hue-rotate(240deg) saturate(1.5) blur(1px);
-            mix-blend-mode: screen;
-            animation: floatSpin var(--duration) ease-in-out infinite alternate;
-            box-shadow: 0 0 25px rgba(167, 139, 250, 0.2), inset 0 0 10px rgba(167, 139, 250, 0.1);
-        }
-
-        [data-theme="light"] .floating-executor {
-            mix-blend-mode: multiply;
-            filter: sepia(0.5) hue-rotate(240deg) saturate(2) blur(1px) brightness(0.8);
-            box-shadow: 0 0 25px rgba(124, 58, 237, 0.3), inset 0 0 10px rgba(124, 58, 237, 0.1);
-        }
-
-        @keyframes floatSpin {
-            0% {
-                transform: translate(0, 0) rotate(0deg) scale(0.8);
-            }
-
-            100% {
-                transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(1.3);
-            }
-        }
-
-        .nav-item.github-tab {
             color: #fff;
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), transparent);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .nav-item.github-tab:hover {
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.4), transparent);
-            border-color: rgba(239, 68, 68, 0.7);
-            transform: scale(1.08);
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.25);
-        }
-
-        .nav-item.github-tab:active {
-            transform: scale(0.95);
-        }
-
-        .nav-item.github-tab svg {
-            color: #ef4444;
-        }
-
-        [data-theme="light"] .nav-item.github-tab {
-            color: #dc2626;
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), transparent);
-            border-color: rgba(239, 68, 68, 0.2);
-        }
-
-        [data-theme="light"] .nav-item.github-tab:hover {
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), transparent);
-            border-color: rgba(239, 68, 68, 0.4);
-            box-shadow: 0 0 15px rgba(239, 68, 68, 0.15);
-        }
-
-        .categories {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
             display: flex;
-            gap: 8px;
-            margin-bottom: 18px;
-            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .social-btn.tiktok:hover {
+            border-color: #ff0050;
+            color: #ff0050;
+            box-shadow: 0 0 20px rgba(255, 0, 80, 0.3);
+        }
+
+        .social-btn.youtube:hover {
+            border-color: #ff0000;
+            color: #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+
+        .social-btn.discord:hover {
+            border-color: #5865f2;
+            color: #5865f2;
+            box-shadow: 0 0 20px rgba(88, 101, 242, 0.3);
+        }
+
+        .theme-toggle {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
             justify-content: center;
         }
 
-        .cat-btn {
-            padding: 6px 14px;
-            border-radius: 20px;
-            border: none;
-            background: var(--cat-bg);
-            color: var(--cat-text);
-            font-family: var(--font);
-            font-size: 12px;
-            font-weight: 500;
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            border-color: #1a73e8;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            border-radius: 50px;
+            padding: 0.6rem 1.2rem;
+            color: #fff;
             cursor: pointer;
-            transition: background var(--transition), color var(--transition);
-        }
-
-        .cat-btn:hover {
-            background: var(--toggle-hover);
-        }
-
-        .cat-btn.active {
-            background: var(--cat-bg-active);
-            color: var(--cat-text-active);
-        }
-
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 16px;
-        }
-
-        .game-card {
-            background: linear-gradient(145deg, color-mix(in srgb, var(--bg-card) 88%, transparent), var(--bg-card));
-            border: 1px solid var(--bg-card-border);
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: transform 0.45s ease;
-            transform-origin: center;
-            cursor: pointer;
-            animation: cardIn 0.35s ease both;
-            position: relative;
-        }
-
-        .game-card::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(180deg, var(--accent), #34d399);
-            opacity: 0.75;
-        }
-
-        .game-card:hover,
-        .game-card:focus-within,
-        .game-card.touch-hover {
-            transform: scale(1.04);
-            z-index: 2;
-        }
-
-        [data-theme="dark"] .game-card {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        [data-theme="light"] .game-card {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        }
-
-        .game-thumb {
-            width: 100%;
-            aspect-ratio: 16/9;
-            object-fit: cover;
-            background: var(--skeleton);
-        }
-
-        .game-thumb.hidden {
-            opacity: 0;
-        }
-
-        .game-info {
-            padding: 12px;
-        }
-
-        .game-name {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-primary);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-bottom: 8px;
-            transition: color var(--transition);
-        }
-
-        .game-meta {
-            display: flex;
+            transition: all 0.3s ease;
+            display: none;
+            z-index: 1000;
+            font-size: 0.9rem;
             align-items: center;
-            justify-content: space-between;
-            font-size: 11px;
-            color: var(--text-muted);
+            gap: 0.5rem;
         }
 
-        .game-status {
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #1a73e8;
+            transform: translateX(-3px);
+        }
+
+        .back-button.show {
             display: flex;
-            align-items: center;
-            gap: 5px;
-            background: var(--bg-elev);
-            border: 1px solid var(--bg-card-border);
-            border-radius: 999px;
-            padding: 3px 8px;
         }
 
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            flex-shrink: 0;
+        .back-button i {
+            font-size: 1rem;
         }
 
-        .status-dot.active {
-            background: #34d399;
-        }
-
-        .status-dot.warning {
-            background: #fbbf24;
-        }
-
-        .status-dot.inactive {
-            background: #f87171;
-        }
-
-        .game-version {
-            color: var(--text-muted);
-            font-size: 10px;
-            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-            background: var(--bg-elev);
-            border: 1px solid var(--bg-card-border);
-            border-radius: 999px;
-            padding: 3px 8px;
-        }
-
-        .skeleton-card .game-thumb,
-        .skeleton-card .skel-name,
-        .skeleton-card .skel-stats {
-            background: var(--skeleton);
-            border-radius: 4px;
-            animation: shimmer 1.5s infinite;
-        }
-
-        .skeleton-card .skel-name {
-            height: 14px;
-            width: 70%;
-            margin-bottom: 8px;
-        }
-
-        .skeleton-card .skel-stats {
-            height: 12px;
-            width: 50%;
-        }
-
-        .empty-state {
+        .header {
             text-align: center;
-            padding: 40px 0;
-            color: var(--text-muted);
-            font-size: 13px;
+            margin-bottom: 2.5rem;
+            padding-top: 20px;
         }
 
-        @keyframes fadeInUp {
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 200, 0, 0.2);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            transition: all 0.4s ease;
+        }
+
+        .header h1 .brand-name {
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            color: #fff;
+            display: inline-block;
+            line-height: 1.3;
+            text-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .header p {
+            color: #8892b0;
+            font-size: 1.15rem;
+            margin-top: 0.5rem;
+            font-weight: 300;
+            transition: all 0.4s ease;
+        }
+
+        .tabs-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .tabs-container.hidden {
+            display: none;
+        }
+
+        .main-tab {
+            background: linear-gradient(135deg, #1a73e8, #0d47a1);
+            border: none;
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(26, 115, 232, 0.3);
+            flex: 0 1 auto;
+            min-width: 180px;
+        }
+
+        .main-tab:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(26, 115, 232, 0.5);
+        }
+
+        .main-tab:active {
+            transform: scale(0.97);
+        }
+
+        .main-tab.active {
+            background: linear-gradient(135deg, #1565c0, #0a3d7a);
+            box-shadow: 0 8px 32px rgba(26, 115, 232, 0.5);
+        }
+
+        .main-tab .tab-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .sub-categories {
+            display: none;
+            grid-template-columns: 1fr;
+            max-width: 500px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+            gap: 1rem;
+        }
+
+        .sub-categories.show {
+            display: grid;
+        }
+
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(16px);
+                transform: translateY(20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        @keyframes cardIn {
-            from {
-                opacity: 0;
-                transform: translateY(12px) scale(0.97);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
+        .category-group {
+            background: #1a1a2e;
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            border-radius: 18px;
+            padding: 1.5rem;
+            transition: all 0.4s ease;
         }
 
-        @keyframes shimmer {
-            0% {
-                opacity: 0.5;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0.5;
-            }
+        .category-group:hover {
+            border-color: #1a73e8;
+            box-shadow: 0 8px 32px rgba(26, 115, 232, 0.15);
         }
 
-        @media (max-width: 520px) {
-            .card {
-                padding: 18px;
-            }
+        .category-group .category-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 0.3rem;
+            transition: all 0.4s ease;
+        }
 
-            .copy-field code {
-                font-size: 11px;
-                padding: 10px 12px;
-            }
+        .category-group .category-subtitle {
+            font-size: 0.9rem;
+            color: #1a73e8;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            opacity: 0.8;
+        }
 
-            .logo img {
+        .sub-category-item {
+            background: #252545;
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            margin-top: 0.8rem;
+        }
+
+        .sub-category-item:first-child {
+            margin-top: 0;
+        }
+
+        .sub-category-item:hover {
+            border-color: #1a73e8;
+            transform: translateX(5px);
+            box-shadow: 0 4px 20px rgba(26, 115, 232, 0.2);
+            background: #2f2f55;
+        }
+
+        .sub-category-item .name {
+            font-weight: 600;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+        }
+
+        .sub-category-item .link-icon {
+            display: inline-block;
+            margin-left: 0.8rem;
+            color: #1a73e8;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .sub-category-item:hover .link-icon {
+            opacity: 1;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            text-align: center;
+            color: #495670;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            transition: all 0.4s ease;
+        }
+
+        .footer-note i {
+            color: #1a73e8;
+            margin: 0 4px;
+        }
+
+        @media (max-width: 640px) {
+            .header {
+                padding-top: 10px;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .top-right-buttons {
+                top: 10px;
+                right: 10px;
+                gap: 6px;
+            }
+            .social-btn {
                 width: 36px;
                 height: 36px;
+                font-size: 1rem;
             }
-
-            .games-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 10px;
+            .theme-toggle {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
             }
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-            padding: 20px;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: var(--bg-body);
-            border: 1px solid var(--bg-card-border);
-            border-radius: var(--radius);
-            width: 100%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            transform: scale(0.95);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-overlay.active .modal-content {
-            transform: scale(1);
-        }
-
-        .modal-header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 30px;
-            border-bottom: 1px solid var(--bg-card-border);
-        }
-
-        .modal-title-area {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .modal-game-label {
-            display: none;
-        }
-
-        .modal-title {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--text-primary);
-            letter-spacing: -0.5px;
-        }
-
-        .modal-actions {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-
-        .play-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            border: 1px solid var(--bg-card-border);
-            color: var(--text-primary);
-            width: 36px;
-            height: 36px;
-            padding: 0;
-            border-radius: var(--radius-sm);
-            font-size: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .play-btn:hover {
-            background: var(--toggle-hover);
-        }
-
-        .close-btn {
-            background: transparent;
-            border: 1px solid var(--bg-card-border);
-            color: var(--text-muted);
-            width: 36px;
-            height: 36px;
-            border-radius: var(--radius-sm);
-            font-size: 18px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .close-btn:hover {
-            background: rgba(248, 113, 113, 0.1);
-            color: #f87171;
-            border-color: rgba(248, 113, 113, 0.2);
-        }
-
-        .modal-body {
-            padding: 30px;
-        }
-
-        .modal-badge {
-            display: none;
-        }
-
-
-
-        .modal-tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
-        }
-
-        .m-tab {
-            padding: 6px 14px;
-            border-radius: 20px;
-            border: none;
-            background: var(--cat-bg);
-            color: var(--cat-text);
-            font-family: var(--font);
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background var(--transition), color var(--transition), transform 0.2s ease;
-            text-transform: none;
-        }
-
-        .m-tab:hover {
-            background: var(--toggle-hover);
-            transform: translateY(-1px);
-        }
-
-        .m-tab.active {
-            background: var(--cat-bg-active);
-            color: var(--cat-text-active);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .feature-box {
-            background: var(--bg-card);
-            border: 1px solid var(--bg-card-border);
-            border-radius: var(--radius-sm);
-            padding: 20px;
-            animation: featureIn 0.3s ease both;
-        }
-
-        .f-box-title {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-
-        .f-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .f-list li {
-            position: relative;
-            padding-left: 14px;
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-
-        .f-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 6px;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            background: var(--accent);
-        }
-
-        .modal-loader {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        .subplace-row {
-            display: none;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-
-        .subplace-row label {
-            font-size: 12px;
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
-
-        .subplace-select {
-            flex: 1;
-            background: var(--bg-field);
-            border: 1px solid var(--bg-field-border);
-            border-radius: 10px;
-            color: var(--text-primary);
-            font-family: var(--font);
-            font-size: 13px;
-            padding: 8px 10px;
-            outline: none;
-        }
-
-        @keyframes featureIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px) scale(0.98);
+            .back-button {
+                top: 10px;
+                left: 10px;
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
             }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
+            .tabs-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+            .main-tab {
+                min-width: unset;
+                width: 80%;
+                padding: 0.7rem 1.5rem;
+            }
+            .main-tab .tab-title {
+                font-size: 1rem;
+            }
+            .sub-categories {
+                max-width: 100%;
+                padding: 0 0.5rem;
+            }
+            .category-group {
+                padding: 1rem;
+            }
+            .category-group .category-title {
+                font-size: 1.1rem;
+            }
+            .sub-category-item {
+                padding: 0.8rem 1rem;
+            }
+            .sub-category-item .name {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
-
 <body>
-
-    <div class="bg-glow-container">
-        <div class="bg-glow-1"></div>
-        <div class="bg-glow-2"></div>
-        <div class="bg-mesh"></div>
+    <div class="top-right-buttons">
+        <a href="https://www.tiktok.com/@huyscriptth?_r=1&_t=ZS-97VT8tTzfnA" target="_blank" class="social-btn tiktok" aria-label="TikTok">
+            <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://youtube.com/@huyscriptth?si=mCjD7RwqJHOZR5We" target="_blank" class="social-btn youtube" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://discord.gg/rW6yuRqAu" target="_blank" class="social-btn discord" aria-label="Discord">
+            <i class="fab fa-discord"></i>
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Chuyển chế độ sáng/tối">
+            <i class="fas fa-moon"></i>
+        </button>
     </div>
 
-    <div id="executorsBgContainer"></div>
+    <button class="back-button" id="backButton">
+        <i class="fas fa-arrow-left"></i> Quay lại
+    </button>
 
-    <header class="app-header">
-        <div class="header-left">
-            <div class="logo"><img src="https://github.com/7yd7/Hub4V/blob/Menu/Assets/icon/I-7yd7.png?raw=true"
-                    alt="Hub4V" draggable="false"></div>
+    <div class="container">
+        <div class="header">
+            <h1>
+                <span class="brand-name">Bear Hub</span>
+            </h1>
+            <p>Khám phá các script mới tại đây</p>
         </div>
-        <nav class="header-nav">
-            <a href="https://github.com/7yd7/Hub4V" target="_blank" rel="noopener noreferrer"
-                class="nav-item github-tab">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
-                    <path
-                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.285 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                </svg> GitHub
-            </a>
-        </nav>
-        <div class="header-right">
-            <a class="discord-btn" href="https://discord.gg/kRfzv2kV7X" target="_blank" rel="noopener noreferrer"
-                aria-label="Discord Server">
-                <img src="https://github.com/7yd7/Hub4V/blob/Menu/Assets/icon/i-discord.png?raw=true" alt="Discord">
-            </a>
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="5" />
-                    <line x1="12" y1="1" x2="12" y2="3" />
-                    <line x1="12" y1="21" x2="12" y2="23" />
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                    <line x1="1" y1="12" x2="3" y2="12" />
-                    <line x1="21" y1="12" x2="23" y2="12" />
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                </svg>
-                <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" stroke-width="2">
-                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-                </svg>
+
+        <div class="tabs-container" id="tabsContainer">
+            <button class="main-tab active" data-tab="script-tong-hop">
+                <span class="tab-title">Script Tổng hợp</span>
+            </button>
+            <button class="main-tab" data-tab="blox-fruit">
+                <span class="tab-title">Script Blox Fruit</span>
             </button>
         </div>
-    </header>
 
-    <div class="main">
-        <div class="global-search-container">
-            <div class="global-search-wrap">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    stroke-width="2">
-                    <circle cx="11" cy="11" r="8" />
-                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-                <input type="text" class="global-search-input" id="searchInput" placeholder="Search games...">
-            </div>
+        <div class="sub-categories" id="subCategories"></div>
+
+        <div class="footer-note">
+            <i class="fas fa-skull"></i> Hay chọn script bạn muốn
         </div>
+    </div>
 
-        <div class="script-copy-wrapper" id="scriptCard">
-            <div class="copy-field" id="copyField" title="Click to copy">
-                <code id="copyText">loadstring(game:HttpGet("https://7yd7.pages.dev/"))()</code>
-                <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                </svg>
-            </div>
-        </div>
+    <script>
+        (function() {
+            const tabs = document.querySelectorAll('.main-tab');
+            const tabsContainer = document.getElementById('tabsContainer');
+            const subContainer = document.getElementById('subCategories');
+            const backButton = document.getElementById('backButton');
+            const themeToggle = document.getElementById('themeToggle');
+            let currentTab = 'script-tong-hop';
+            let isInsideTab = false;
+            let isDarkMode = true;
 
-        <div class="games-section">
-
-
-            <div class="categories" id="categories"></div>
-
-            <div class="games-grid" id="gamesGrid"></div>
-
-            <div class="empty-state" id="emptyState" style="display:none;">No games found.</div>
-        </div>
-
-
-        <div class="modal-overlay" id="gameModal">
-            <div class="modal-content">
-                <div class="modal-header-top">
-                    <div class="modal-title-area">
-                        <span class="modal-game-label">Game</span>
-                        <h2 class="modal-title" id="mTitle">Loading...</h2>
-                    </div>
-                    <div class="modal-actions">
-                        <a href="#" class="play-btn" id="mPlayBtn" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                        </a>
-                        <button class="close-btn" id="mCloseBtn">&times;</button>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-badge" id="mBadge">
-                        <span class="status-dot active" id="mBadgeDot"></span> <span id="mBadgeText">LIVE/UPDATED</span>
-                    </div>
-                    <div class="subplace-row" id="mSubplaceRow">
-                        <label for="mSubplaceSelect">Mode</label>
-                        <select id="mSubplaceSelect" class="subplace-select"></select>
-                    </div>
-                    <div id="mLoader" class="modal-loader">Fetching features...</div>
-                    <div id="mContent" style="display: none;">
-                        <div class="modal-tabs" id="mTabs"></div>
-                        <div class="features-grid" id="mFeaturesGrid"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script>
-            const toggle = document.getElementById('themeToggle');
-            const html = document.documentElement;
-            let lastScrollY = window.scrollY;
-            let scrollTicking = false;
-            const saved = localStorage.getItem('hub4v-theme');
-            if (saved) html.setAttribute('data-theme', saved);
-            toggle.addEventListener('click', () => {
-                const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-                html.setAttribute('data-theme', next);
-                localStorage.setItem('hub4v-theme', next);
-            });
-
-            document.addEventListener('mousemove', (e) => {
-                const x = (e.clientX / window.innerWidth) * 100;
-                const y = (e.clientY / window.innerHeight) * 100;
-                document.documentElement.style.setProperty('--mouse-x', `${x}%`);
-                document.documentElement.style.setProperty('--mouse-y', `${y}%`);
-            }, { passive: true });
-
-            function handleTopUiVisibility() {
-                const currentY = window.scrollY;
-                const showOnlyNearTop = currentY <= 40;
-                document.body.classList.toggle('top-ui-hidden', !showOnlyNearTop);
-                lastScrollY = currentY;
-                scrollTicking = false;
-            }
-
-            window.addEventListener('scroll', () => {
-                if (scrollTicking) return;
-                scrollTicking = true;
-                requestAnimationFrame(handleTopUiVisibility);
-            }, { passive: true });
-
-            const copyField = document.getElementById('copyField');
-            const copyText = document.getElementById('copyText');
-            let copyTimeout;
-            copyField.addEventListener('click', async () => {
-                try { await navigator.clipboard.writeText(copyText.textContent); }
-                catch { const r = document.createRange(); r.selectNodeContents(copyText); const s = window.getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); s.removeAllRanges(); }
-
-                copyField.classList.add('copied');
-
-                clearTimeout(copyTimeout);
-                copyTimeout = setTimeout(() => {
-                    copyField.classList.remove('copied');
-                }, 1200);
-            });
-
-            const grid = document.getElementById('gamesGrid');
-            const searchInput = document.getElementById('searchInput');
-            const categoriesEl = document.getElementById('categories');
-            const emptyState = document.getElementById('emptyState');
-
-            let allGames = [];
-            let activeCategory = 'All';
-
-
-
-            function showSkeletons(count) {
-                grid.innerHTML = '';
-                for (let i = 0; i < count; i++) {
-                    const el = document.createElement('div');
-                    el.className = 'game-card skeleton-card';
-                    el.innerHTML = '<div class="game-thumb"></div><div class="game-info"><div class="skel-name"></div><div class="skel-stats"></div></div>';
-                    grid.appendChild(el);
+            const tabContent = {
+                'script-tong-hop': {
+                    title: 'Script Tổng hợp',
+                    subtitle: 'Script Tổng hợp ngon nhất',
+                    items: [
+                        {
+                            name: 'Bear Hub Premium',
+                            url: 'https://link4sub.com/Nkcwg6fJOn'
+                        }
+                    ]
+                },
+                'blox-fruit': {
+                    title: 'Script Blox Fruit',
+                    subtitle: 'Tổng hợp script Blox Fruit',
+                    items: [
+                        {
+                            name: 'Bear Hub V1',
+                            url: 'https://link4sub.com/XanfieMpfu'
+                        },
+                        {
+                            name: 'Bear Hub V2',
+                            url: 'https://link4sub.com/reuWXUzeC5'
+                        },
+                        {
+                            name: 'Bear Hub V3',
+                            url: 'https://link4sub.com/2KbqBEOdMY'
+                        }
+                    ]
                 }
-            }
+            };
 
-            function renderGames() {
-                const query = searchInput.value.toLowerCase().trim();
-                const filtered = allGames.filter(g => {
-                    const matchCat = activeCategory === 'All' || g.category === activeCategory;
-                    const matchSearch = !query || g.name.toLowerCase().includes(query);
-                    return matchCat && matchSearch;
-                });
+            function renderSubCategories(tabId) {
+                if (!subContainer) return;
+                const content = tabContent[tabId];
+                if (!content) return;
 
-                grid.innerHTML = '';
-                emptyState.style.display = filtered.length ? 'none' : 'block';
+                subContainer.innerHTML = '';
 
-                filtered.forEach((g, i) => {
-                    const card = document.createElement('div');
-                    card.className = 'game-card';
-                    card.style.animationDelay = `${i * 0.04}s`;
-
-                    const statusClass = g.status === '1' ? 'active' : g.status === '2' ? 'warning' : 'inactive';
-                    const statusText = g.status === '1' ? 'Working' : g.status === '2' ? 'Updating' : 'Broken';
-
-                    card.innerHTML = `
-                    <img class="game-thumb" src="${g.thumbnail || ''}" alt="${g.name}" loading="lazy" onerror="this.classList.add('hidden')">
-                    <div class="game-info">
-                        <div class="game-name" title="${g.name}">${g.name}</div>
-                        <div class="game-meta">
-                            <span class="game-status"><span class="status-dot ${statusClass}"></span>${statusText}</span>
-                            <span class="game-version">v${g.version}</span>
+                if (content.items.length === 0) {
+                    const emptyMessage = document.createElement('div');
+                    emptyMessage.className = 'category-group';
+                    emptyMessage.innerHTML = `
+                        <div class="category-title" style="color: #8892b0; font-size: 1rem; font-weight: 400;">
+                            <i class="fas fa-inbox"></i> Chưa có script nào
                         </div>
-                    </div>
-                `;
-
-                    card.addEventListener('click', () => openGameModal(g));
-
-                    grid.appendChild(card);
-                });
-            }
-
-            const modal = document.getElementById('gameModal');
-            const mCloseBtn = document.getElementById('mCloseBtn');
-            const mTitle = document.getElementById('mTitle');
-            const mPlayBtn = document.getElementById('mPlayBtn');
-            const mBadge = document.getElementById('mBadge');
-            const mBadgeDot = document.getElementById('mBadgeDot');
-            const mBadgeText = document.getElementById('mBadgeText');
-            const mLoader = document.getElementById('mLoader');
-            const mContent = document.getElementById('mContent');
-            const mTabs = document.getElementById('mTabs');
-            const mFeaturesGrid = document.getElementById('mFeaturesGrid');
-            const mSubplaceRow = document.getElementById('mSubplaceRow');
-            const mSubplaceSelect = document.getElementById('mSubplaceSelect');
-
-            let currentParsedTabs = [];
-
-            function getPrimaryId(val) {
-                if (Array.isArray(val)) return val[0] || '';
-                return val || '';
-            }
-
-            function getGameTargets(game) {
-                const targets = [];
-                const subplaces = game.subplaces || {};
-                const subEntries = Object.entries(subplaces);
-
-                if (subEntries.length > 0) {
-                    subEntries.forEach(([key, sub]) => {
-                        targets.push({
-                            key,
-                            label: sub?.name || key,
-                            id: getPrimaryId(sub?.id),
-                            path: sub?.path || ''
-                        });
-                    });
-                    return targets;
+                    `;
+                    subContainer.appendChild(emptyMessage);
+                    return;
                 }
 
-                targets.push({
-                    key: 'main',
-                    label: game.name || 'Main',
-                    id: getPrimaryId(game.id),
-                    path: game.path || ''
+                const categoryGroup = document.createElement('div');
+                categoryGroup.className = 'category-group';
+
+                const title = document.createElement('div');
+                title.className = 'category-title';
+                title.textContent = content.title;
+
+                const subtitle = document.createElement('div');
+                subtitle.className = 'category-subtitle';
+                subtitle.textContent = content.subtitle;
+
+                categoryGroup.appendChild(title);
+                categoryGroup.appendChild(subtitle);
+
+                content.items.forEach(itemData => {
+                    const item = document.createElement('a');
+                    item.className = 'sub-category-item';
+                    item.href = itemData.url;
+                    item.target = '_blank';
+                    item.innerHTML = `
+                        <span class="name">${itemData.name}</span>
+                        <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
+                    `;
+
+                    item.addEventListener('click', function(e) {
+                        console.log(`Chuyển đến ${itemData.name}`);
+                    });
+
+                    categoryGroup.appendChild(item);
                 });
-                return targets;
+
+                subContainer.appendChild(categoryGroup);
             }
 
-            function closeGameModal() {
-                modal.classList.remove('active');
-                document.body.classList.remove('features-open');
-                handleTopUiVisibility();
+            function enterTab(tabId) {
+                isInsideTab = true;
+                tabsContainer.classList.add('hidden');
+                backButton.classList.add('show');
+                
+                tabs.forEach(t => t.classList.remove('active'));
+                const activeTab = document.querySelector(`[data-tab="${tabId}"]`);
+                if (activeTab) activeTab.classList.add('active');
+                
+                currentTab = tabId;
+                renderSubCategories(tabId);
+                subContainer.classList.add('show');
             }
 
-            mCloseBtn.addEventListener('click', closeGameModal);
-            modal.addEventListener('click', (e) => { if (e.target === modal) closeGameModal(); });
+            function exitTab() {
+                isInsideTab = false;
+                tabsContainer.classList.remove('hidden');
+                backButton.classList.remove('show');
+                subContainer.classList.remove('show');
+            }
 
-            async function loadModalFeaturesByPath(scriptPath) {
-                const url = `https://raw.githubusercontent.com/7yd7/Hub4V/refs/heads/Menu/Script/Games/${encodeURIComponent(scriptPath)}?t=${Date.now()}`;
-                const res = await fetch(url);
-                if (!res.ok) throw new Error(`Failed to fetch game script: ${res.status}`);
-                const data = await res.json();
-                currentParsedTabs = parseGameFeatures(data);
-
-                if (currentParsedTabs.length > 0) {
-                    renderModalTabs(currentParsedTabs);
+            function toggleTheme() {
+                isDarkMode = !isDarkMode;
+                document.body.classList.toggle('light-mode', !isDarkMode);
+                
+                const icon = themeToggle.querySelector('i');
+                if (isDarkMode) {
+                    icon.className = 'fas fa-moon';
                 } else {
-                    mLoader.textContent = "No features found.";
+                    icon.className = 'fas fa-sun';
                 }
             }
 
-            async function openGameModal(game) {
-                modal.classList.add('active');
-                document.body.classList.add('features-open');
-                mTitle.textContent = game.name;
-                mPlayBtn.href = `https://www.roblox.com/games/${getPrimaryId(game.id)}`;
-
-                mBadge.style.borderColor = game.status === '1' ? 'rgba(52,211,153,0.2)' : (game.status === '2' ? 'rgba(251,191,36,0.2)' : 'rgba(248,113,113,0.2)');
-                mBadge.style.background = game.status === '1' ? 'rgba(52,211,153,0.05)' : (game.status === '2' ? 'rgba(251,191,36,0.05)' : 'rgba(248,113,113,0.05)');
-                mBadge.style.color = game.status === '1' ? '#34d399' : (game.status === '2' ? '#fbbf24' : '#f87171');
-                mBadgeDot.className = `status-dot ${game.status === '1' ? 'active' : (game.status === '2' ? 'warning' : 'inactive')}`;
-                mBadgeText.textContent = game.status === '1' ? 'LIVE/UPDATED' : (game.status === '2' ? 'UPDATING' : 'BROKEN');
-
-                mLoader.style.display = 'block';
-                mContent.style.display = 'none';
-                mTabs.innerHTML = '';
-                mFeaturesGrid.innerHTML = '';
-                mSubplaceSelect.innerHTML = '';
-                mSubplaceRow.style.display = 'none';
-
-                try {
-                    const targets = getGameTargets(game).filter(t => t.path);
-                    if (targets.length === 0) {
-                        throw new Error('No script path found for this game');
-                    }
-
-                    if (targets.length > 1) {
-                        mSubplaceRow.style.display = 'flex';
-                        targets.forEach((target, idx) => {
-                            const opt = document.createElement('option');
-                            opt.value = String(idx);
-                            opt.textContent = target.label || `Mode ${idx + 1}`;
-                            mSubplaceSelect.appendChild(opt);
-                        });
-                    }
-
-                    const loadTarget = async (index) => {
-                        const target = targets[index] || targets[0];
-                        if (!target) return;
-                        mLoader.style.display = 'block';
-                        mLoader.textContent = 'Fetching features...';
-                        mContent.style.display = 'none';
-                        mTabs.innerHTML = '';
-                        mFeaturesGrid.innerHTML = '';
-                        await loadModalFeaturesByPath(target.path);
-                    };
-
-                    mSubplaceSelect.onchange = () => {
-                        const selectedIndex = Number(mSubplaceSelect.value) || 0;
-                        loadTarget(selectedIndex).catch(err => {
-                            console.error(err);
-                            mLoader.style.display = 'block';
-                            mLoader.textContent = "Failed to load features.";
-                            mContent.style.display = 'none';
-                        });
-                    };
-
-                    await loadTarget(0);
-                } catch (err) {
-                    console.error(err);
-                    mLoader.textContent = "Failed to load features.";
-                }
-            }
-
-            function parseGameFeatures(data) {
-                if (!data || !data.Tabs) return [];
-                let parsedTabs = [];
-
-                function extractLogicFeatures(script) {
-                    const features = [];
-                    if (!script) return features;
-
-                    const masterRegex = /Value:Add(Toggle|Button|Slider|Input|Dropdown)\s*\(/g;
-                    const seen = new Set();
-                    let callMatch;
-
-                    while ((callMatch = masterRegex.exec(script)) !== null) {
-                        const afterCall = script.substring(callMatch.index + callMatch[0].length);
-
-                        const braceIdx = afterCall.indexOf('{');
-                        if (braceIdx === -1) continue;
-
-                        const afterBrace = afterCall.substring(braceIdx);
-                        const titleMatch = afterBrace.match(/Title\s*=\s*['"]([^'"]+)['"]/);
-                        if (titleMatch && titleMatch[1]) {
-                            const title = titleMatch[1].trim();
-                            if (!seen.has(title)) {
-                                seen.add(title);
-                                features.push(title);
-                            }
-                        }
-                    }
-
-                    return features;
-                }
-
-                data.Tabs.forEach(tab => {
-                    let pTab = { title: tab.Title || "Main", sections: [] };
-                    let currentSection = { title: "General", features: [] };
-
-                    if (tab.Elements) {
-                        tab.Elements.forEach(el => {
-                            if (el.Type === "Section" || el.SectionTitle) {
-                                if (currentSection.features.length > 0) pTab.sections.push(currentSection);
-                                currentSection = { title: el.Title || el.SectionTitle || "General", features: [] };
-                            } else if (el.Type === "Logic" && el.Script) {
-                                const extracted = extractLogicFeatures(el.Script);
-                                extracted.forEach(f => currentSection.features.push(f));
-                            } else if (el.Title) {
-                                currentSection.features.push(el.Title);
-                            }
-                        });
-                    }
-                    if (currentSection.features.length > 0) pTab.sections.push(currentSection);
-                    if (pTab.sections.length > 0) parsedTabs.push(pTab);
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.dataset.tab;
+                    enterTab(tabId);
                 });
-                return parsedTabs;
-            }
+            });
 
-            function renderModalTabs(tabs) {
-                mLoader.style.display = 'none';
-                mContent.style.display = 'block';
-                mTabs.innerHTML = '';
+            backButton.addEventListener('click', function() {
+                exitTab();
+            });
 
-                tabs.forEach((t, i) => {
-                    const btn = document.createElement('button');
-                    btn.className = `m-tab ${i === 0 ? 'active' : ''}`;
-                    btn.textContent = t.title;
-                    btn.onclick = () => {
-                        document.querySelectorAll('.m-tab').forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        renderModalFeatures(t.sections);
-                    };
-                    mTabs.appendChild(btn);
-                });
+            themeToggle.addEventListener('click', toggleTheme);
 
-                if (tabs.length > 0) renderModalFeatures(tabs[0].sections);
-            }
+            subContainer.classList.remove('show');
 
-            function renderModalFeatures(sections) {
-                mFeaturesGrid.innerHTML = '';
-                mFeaturesGrid.style.animation = 'none';
-                requestAnimationFrame(() => {
-                    mFeaturesGrid.style.animation = 'featureIn 0.25s ease';
-                });
-                sections.forEach(sec => {
-                    const uniqueFeatures = [...new Set(sec.features)];
-                    if (uniqueFeatures.length === 0) return;
-
-                    const box = document.createElement('div');
-                    box.className = 'feature-box';
-
-                    let listHtml = uniqueFeatures.map(f => `<li>${f}</li>`).join('');
-
-                    box.innerHTML = `
-                    <div class="f-box-title">${sec.title}</div>
-                    <ul class="f-list">${listHtml}</ul>
-                `;
-                    mFeaturesGrid.appendChild(box);
-                });
-            }
-
-            function renderCategories(cats) {
-                categoriesEl.innerHTML = '';
-                cats.forEach(c => {
-                    const btn = document.createElement('button');
-                    btn.className = 'cat-btn' + (c === activeCategory ? ' active' : '');
-                    btn.textContent = c;
-                    btn.addEventListener('click', () => {
-                        activeCategory = c;
-                        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        renderGames();
-                    });
-                    categoriesEl.appendChild(btn);
-                });
-            }
-
-            searchInput.addEventListener('input', renderGames);
-
-            let touchHoverTimeout;
-            grid.addEventListener('touchstart', (e) => {
-                const card = e.target.closest('.game-card');
-                if (!card || card.classList.contains('skeleton-card')) return;
-                document.querySelectorAll('.game-card.touch-hover').forEach(c => c.classList.remove('touch-hover'));
-                card.classList.add('touch-hover');
-                clearTimeout(touchHoverTimeout);
-                touchHoverTimeout = setTimeout(() => card.classList.remove('touch-hover'), 700);
-            }, { passive: true });
-
-            grid.addEventListener('touchend', () => {
-                clearTimeout(touchHoverTimeout);
-                touchHoverTimeout = setTimeout(() => {
-                    document.querySelectorAll('.game-card.touch-hover').forEach(c => c.classList.remove('touch-hover'));
-                }, 250);
-            }, { passive: true });
-
-            grid.addEventListener('touchcancel', () => {
-                document.querySelectorAll('.game-card.touch-hover').forEach(c => c.classList.remove('touch-hover'));
-            }, { passive: true });
-
-            async function init() {
-                showSkeletons(8);
-                try {
-                    const res = await fetch('https://raw.githubusercontent.com/7yd7/Hub4V/refs/heads/Menu/Script/Games.json');
-                    const data = await res.json();
-                    const entries = Object.values(data);
-                    const placeIds = entries.map(e => getPrimaryId(e.id)).filter(Boolean).join(',');
-                    let thumbMap = {};
-                    try {
-                        const thumbRes = await fetch(`https://thumbnails.roproxy.com/v1/places/gameicons?placeIds=${placeIds}&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false`);
-                        const thumbData = await thumbRes.json();
-                        thumbData.data?.forEach(t => { thumbMap[t.targetId] = t.imageUrl || ''; });
-                    } catch (e) { console.warn('Failed to load thumbnails', e); }
-
-                    const categories = new Set();
-                    allGames = entries.map(e => {
-                        categories.add(e.category);
-                        return {
-                            id: e.id, name: e.name, category: e.category,
-                            status: e.status || '0', version: e.version || '?',
-                            thumbnail: thumbMap[getPrimaryId(e.id)] || '',
-                            path: e.path || '',
-                            subplaces: e.subplaces || {}
-                        };
-                    });
-
-                    renderCategories(['All', ...Array.from(categories).sort()]);
-                    renderGames();
-                } catch (err) {
-                    console.error('Failed to load games:', err);
-                    grid.innerHTML = '<div class="empty-state">Failed to load games.</div>';
-                }
-
-                try {
-                    const bgContainer = document.getElementById('executorsBgContainer');
-                    if (bgContainer) {
-                        const res = await fetch('https://weao.xyz/api/status/exploits');
-                        const data = await res.json();
-
-                        const valid = data.filter(e => e.extype !== 'wexternal');
-                        if (valid.length > 0) {
-                            valid.forEach(e => {
-                                const title = e.title || e.name || 'Executor';
-                                const logoUrl = e.slug?.logo || `https://placehold.co/40x40/222222/FFFFFF/png?text=${title.charAt(0)}`;
-
-                                const el = document.createElement('img');
-                                el.className = 'floating-executor';
-                                el.src = "https://weao.xyz/_next/image?url=" + logoUrl + "&w=256&q=100";
-                                el.onerror = () => { el.style.display = 'none'; };
-
-                                const startX = Math.random() * 100;
-                                const startY = Math.random() * 100;
-                                const size = Math.random() * 50 + 30;
-                                const tx = (Math.random() - 0.5) * 600 + 'px';
-                                const ty = (Math.random() - 0.5) * 600 + 'px';
-                                const rot = (Math.random() - 0.5) * 720 + 'deg';
-                                const duration = Math.random() * 20 + 25;
-                                const delay = Math.random() * -40;
-
-                                el.style.left = `${startX}vw`;
-                                el.style.top = `${startY}vh`;
-                                el.style.width = `${size}px`;
-                                el.style.height = `${size}px`;
-                                el.style.opacity = Math.random() * 0.4 + 0.1;
-                                el.style.setProperty('--tx', tx);
-                                el.style.setProperty('--ty', ty);
-                                el.style.setProperty('--rot', rot);
-                                el.style.setProperty('--duration', `${duration}s`);
-                                el.style.animationDelay = `${delay}s`;
-
-                                bgContainer.appendChild(el);
-                            });
-                        }
-                    }
-                } catch (err) {
-                    console.warn('Failed to load WEAO executors:', err);
-                }
-            }
-
-            init();
-        </script>
+        })();
+    </script>
 </body>
-
 </html>
