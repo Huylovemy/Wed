@@ -544,30 +544,29 @@
                 'blox-fruit': {
                     title: 'Script Blox Fruit',
                     subtitle: 'Tổng hợp script Blox Fruit',
-                    items: [
+                    groups: [
                         {
-                            name: 'Bear Hub V1',
-                            url: 'https://link4sub.com/XanfieMpfu'
+                            name: 'Script Farm',
+                            items: [
+                                { name: 'Bear Hub V1', url: 'https://link4sub.com/XanfieMpfu' },
+                                { name: 'Bear Hub V2', url: 'https://link4sub.com/reuWXUzeC5' },
+                                { name: 'Bear Hub V3', url: 'https://link4sub.com/2KbqBEOdMY' },
+                                { name: 'Bear Hub V4', url: 'https://link4sub.com/BNCWbzDGGr' },
+                                { name: 'Bear Hub V5', url: 'https://link4sub.com/Pjx3zojkvk' },
+                                { name: 'Bear Hub V6', url: 'https://link4sub.com/2vu1tmvWr6' },
+                                { name: 'Quantum Onyx', url: 'https://link4sub.com/ELyWdkzruo' },
+                                { name: 'OMG Hub', url: 'https://link4sub.com/R3EK5j4cQX' }
+                            ]
                         },
                         {
-                            name: 'Bear Hub V2',
-                            url: 'https://link4sub.com/reuWXUzeC5'
-                        },
-                        {
-                            name: 'Bear Hub V3',
-                            url: 'https://link4sub.com/2KbqBEOdMY'
-                        },
-                        {
-                            name: 'Bear Hub V4',
-                            url: 'https://link4sub.com/BNCWbzDGGr'
-                        },
-                        {
-                            name: 'Bear Hub V5',
-                            url: 'https://link4sub.com/Pjx3zojkvk'
-                        },
-                        {
-                            name: 'Bear Hub V6',
-                            url: 'https://link4sub.com/2vu1tmvWr6'
+                            name: 'Script PvP',
+                            items: [
+                                { name: 'Hermanos\'Dev|PVP', url: 'https://link4sub.com/rHCnbd9HQ6' },
+                                { name: 'CentuDox.xyz', url: 'https://link4sub.com/l6BurZ3RJb' },
+                                { name: 'MENU', url: 'https://link4sub.com/dBFPm5DApw' },
+                                { name: 'Menu 1', url: 'https://link4sub.com/vOYWgz7Qtu' },
+                                { name: 'Menu 2', url: 'https://link4sub.com/IEJyUDSRNA' }
+                            ]
                         }
                     ]
                 }
@@ -580,50 +579,102 @@
 
                 subContainer.innerHTML = '';
 
-                if (content.items.length === 0) {
-                    const emptyMessage = document.createElement('div');
-                    emptyMessage.className = 'category-group';
-                    emptyMessage.innerHTML = `
-                        <div class="category-title" style="color: #8892b0; font-size: 1rem; font-weight: 400;">
-                            <i class="fas fa-inbox"></i> Chưa có script nào
-                        </div>
-                    `;
-                    subContainer.appendChild(emptyMessage);
-                    return;
-                }
+                if (content.groups) {
+                    let hasItems = false;
+                    content.groups.forEach(group => {
+                        if (group.items.length === 0) return;
+                        hasItems = true;
 
-                const categoryGroup = document.createElement('div');
-                categoryGroup.className = 'category-group';
+                        const categoryGroup = document.createElement('div');
+                        categoryGroup.className = 'category-group';
 
-                const title = document.createElement('div');
-                title.className = 'category-title';
-                title.textContent = content.title;
+                        const title = document.createElement('div');
+                        title.className = 'category-title';
+                        title.textContent = group.name;
 
-                const subtitle = document.createElement('div');
-                subtitle.className = 'category-subtitle';
-                subtitle.textContent = content.subtitle;
+                        const subtitle = document.createElement('div');
+                        subtitle.className = 'category-subtitle';
+                        subtitle.textContent = content.subtitle;
 
-                categoryGroup.appendChild(title);
-                categoryGroup.appendChild(subtitle);
+                        categoryGroup.appendChild(title);
+                        categoryGroup.appendChild(subtitle);
 
-                content.items.forEach(itemData => {
-                    const item = document.createElement('a');
-                    item.className = 'sub-category-item';
-                    item.href = itemData.url;
-                    item.target = '_blank';
-                    item.innerHTML = `
-                        <span class="name">${itemData.name}</span>
-                        <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
-                    `;
+                        group.items.forEach(itemData => {
+                            const item = document.createElement('a');
+                            item.className = 'sub-category-item';
+                            item.href = itemData.url;
+                            item.target = '_blank';
+                            item.innerHTML = `
+                                <span class="name">${itemData.name}</span>
+                                <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
+                            `;
 
-                    item.addEventListener('click', function(e) {
-                        console.log(`Chuyển đến ${itemData.name}`);
+                            item.addEventListener('click', function(e) {
+                                console.log(`Chuyển đến ${itemData.name}`);
+                            });
+
+                            categoryGroup.appendChild(item);
+                        });
+
+                        subContainer.appendChild(categoryGroup);
                     });
 
-                    categoryGroup.appendChild(item);
-                });
+                    if (!hasItems) {
+                        const emptyMessage = document.createElement('div');
+                        emptyMessage.className = 'category-group';
+                        emptyMessage.innerHTML = `
+                            <div class="category-title" style="color: #8892b0; font-size: 1rem; font-weight: 400;">
+                                <i class="fas fa-inbox"></i> Chưa có script nào
+                            </div>
+                        `;
+                        subContainer.appendChild(emptyMessage);
+                    }
+                } else if (content.items) {
+                    if (content.items.length === 0) {
+                        const emptyMessage = document.createElement('div');
+                        emptyMessage.className = 'category-group';
+                        emptyMessage.innerHTML = `
+                            <div class="category-title" style="color: #8892b0; font-size: 1rem; font-weight: 400;">
+                                <i class="fas fa-inbox"></i> Chưa có script nào
+                            </div>
+                        `;
+                        subContainer.appendChild(emptyMessage);
+                        return;
+                    }
 
-                subContainer.appendChild(categoryGroup);
+                    const categoryGroup = document.createElement('div');
+                    categoryGroup.className = 'category-group';
+
+                    const title = document.createElement('div');
+                    title.className = 'category-title';
+                    title.textContent = content.title;
+
+                    const subtitle = document.createElement('div');
+                    subtitle.className = 'category-subtitle';
+                    subtitle.textContent = content.subtitle;
+
+                    categoryGroup.appendChild(title);
+                    categoryGroup.appendChild(subtitle);
+
+                    content.items.forEach(itemData => {
+                        const item = document.createElement('a');
+                        item.className = 'sub-category-item';
+                        item.href = itemData.url;
+                        item.target = '_blank';
+                        item.innerHTML = `
+                            <span class="name">${itemData.name}</span>
+                            <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
+                        `;
+
+                        item.addEventListener('click', function(e) {
+                            console.log(`Chuyển đến ${itemData.name}`);
+                        });
+
+                        categoryGroup.appendChild(item);
+                    });
+
+                    subContainer.appendChild(categoryGroup);
+                }
             }
 
             function enterTab(tabId) {
