@@ -504,7 +504,10 @@
         </div>
 
         <div class="tabs-container" id="tabsContainer">
-            <button class="main-tab active" data-tab="script-tong-hop">
+            <button class="main-tab active" data-tab="delta-moi-nhat">
+                <span class="tab-title">Delta mới nhất</span>
+            </button>
+            <button class="main-tab" data-tab="script-tong-hop">
                 <span class="tab-title">Script Tổng hợp</span>
             </button>
             <button class="main-tab" data-tab="blox-fruit">
@@ -526,11 +529,23 @@
             const subContainer = document.getElementById('subCategories');
             const backButton = document.getElementById('backButton');
             const themeToggle = document.getElementById('themeToggle');
-            let currentTab = 'script-tong-hop';
+            let currentTab = 'delta-moi-nhat';
             let isInsideTab = false;
             let isDarkMode = true;
 
             const tabContent = {
+                'delta-moi-nhat': {
+                    title: 'Delta mới nhất',
+                    subtitle: 'Delta X VNG',
+                    groups: [
+                        {
+                            name: 'Delta X VNG',
+                            items: [
+                                { name: 'Delta X VNG V2.725', url: 'https://link4sub.com/AZj6H1C3Al' }
+                            ]
+                        }
+                    ]
+                },
                 'script-tong-hop': {
                     title: 'Script Tổng hợp',
                     subtitle: 'Script Tổng hợp ngon nhất',
@@ -710,9 +725,17 @@
                 }
             }
 
+            // Không tự động mở tab nào khi tải trang
+            // Chỉ hiển thị danh sách tab
+            subContainer.classList.remove('show');
+
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
                     const tabId = this.dataset.tab;
+                    // Nếu đang ở trong tab, thoát ra trước
+                    if (isInsideTab) {
+                        exitTab();
+                    }
                     enterTab(tabId);
                 });
             });
@@ -722,8 +745,6 @@
             });
 
             themeToggle.addEventListener('click', toggleTheme);
-
-            subContainer.classList.remove('show');
 
         })();
     </script>
