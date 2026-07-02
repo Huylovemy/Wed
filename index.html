@@ -541,7 +541,9 @@
                         {
                             name: 'Delta X VNG',
                             items: [
-                                { name: 'Delta X VNG V2.725', url: 'https://link4sub.com/AZj6H1C3Al' }
+                                { name: 'Delta X VNG V2.725', url: 'https://link4sub.com/AZj6H1C3Al' },
+                                { name: 'Delta X QT V2.725', url: 'https://link4sub.com/ovjhqOCrDE' },
+                                { name: 'Delta X QT login', url: 'https://link4sub.com/W0pX6oQxEO' }
                             ]
                         }
                     ]
@@ -725,14 +727,11 @@
                 }
             }
 
-            // Không tự động mở tab nào khi tải trang
-            // Chỉ hiển thị danh sách tab
             subContainer.classList.remove('show');
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
                     const tabId = this.dataset.tab;
-                    // Nếu đang ở trong tab, thoát ra trước
                     if (isInsideTab) {
                         exitTab();
                     }
