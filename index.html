@@ -1,752 +1,581 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bear Hub - Blox Fruits</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bear Hub</title>
 
-        body {
-            background: #0a0a0a;
-            min-height: 100vh;
-            padding: 2rem 1rem;
-            transition: all 0.4s ease;
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        body.light-mode {
-            background: #f5f7fa;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-        body.light-mode .header h1 .brand-name {
-            color: #1a1a2e;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+body {
+    background: #0a0a0a;
+    color: white;
+    min-height: 100vh;
+    padding: 20px 15px 30px;
+}
 
-        body.light-mode .header p {
-            color: #4a4a6a;
-        }
+/* TOPBAR */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 65px;
+}
 
-        body.light-mode .main-tab {
-            background: linear-gradient(135deg, #1a73e8, #0d47a1);
-            box-shadow: 0 8px 32px rgba(26, 115, 232, 0.3);
-        }
+.brand {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    white-space: nowrap;
+}
 
-        body.light-mode .main-tab:hover {
-            box-shadow: 0 12px 40px rgba(26, 115, 232, 0.5);
-        }
+.brand-name {
+    font-size: 23px;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 12px #1a73e8;
+}
 
-        body.light-mode .main-tab.active {
-            background: linear-gradient(135deg, #1565c0, #0a3d7a);
-            box-shadow: 0 8px 32px rgba(26, 115, 232, 0.5);
-        }
+.brand-author {
+    font-size: 11px;
+    color: #888;
+}
 
-        body.light-mode .category-group {
-            background: #e8f0fe;
-            border-color: rgba(0, 0, 0, 0.1);
-        }
+/* SOCIAL BUTTONS */
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
-        body.light-mode .category-group .category-title {
-            color: #1a1a2e;
-        }
+.top-right a,
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .3s;
+    flex-shrink: 0;
+}
 
-        body.light-mode .sub-category-item {
-            background: #dce8f5;
-            border-color: rgba(0, 0, 0, 0.08);
-        }
+.top-right a:hover,
+.theme-toggle:hover {
+    transform: scale(1.1);
+    border-color: #1a73e8;
+}
 
-        body.light-mode .sub-category-item .name {
-            color: #1a1a2e;
-        }
+/* CONTAINER */
+.container {
+    max-width: 900px;
+    margin: auto;
+}
 
-        body.light-mode .sub-category-item:hover {
-            background: #c5d8ed;
-            border-color: #1a73e8;
-        }
+/* ROBLOX BUTTON */
+.roblox-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto 20px;
+    padding: 15px;
+    background: #151515;
+    border: 1px solid #1a73e8;
+    border-radius: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
 
-        body.light-mode .footer-note {
-            color: #6a6a8a;
-        }
+.roblox-btn img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    border-radius: 4px;
+}
 
-        body.light-mode .back-button {
-            background: rgba(0, 0, 0, 0.08);
-            border-color: rgba(0, 0, 0, 0.15);
-            color: #1a1a2e;
-        }
+.roblox-btn:hover {
+    background: #1a73e8;
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px #1a73e855;
+}
 
-        body.light-mode .back-button:hover {
-            background: rgba(0, 0, 0, 0.15);
-            border-color: #1a73e8;
-        }
+/* ROBLOX PAGE */
+#robloxPage {
+    display: none;
+}
 
-        body.light-mode .social-btn {
-            background: rgba(0, 0, 0, 0.08);
-            border-color: rgba(0, 0, 0, 0.15);
-            color: #1a1a2e;
-        }
+.back-btn {
+    background: #151515;
+    border: 1px solid #333;
+    color: #aaa;
+    padding: 10px 15px;
+    border-radius: 9px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: .3s;
+}
 
-        body.light-mode .social-btn:hover {
-            background: rgba(0, 0, 0, 0.15);
-        }
+.back-btn:hover {
+    color: white;
+    border-color: #1a73e8;
+}
 
-        body.light-mode .theme-toggle {
-            background: rgba(0, 0, 0, 0.08);
-            border-color: rgba(0, 0, 0, 0.15);
-            color: #1a1a2e;
-        }
+/* SUB TABS */
+.sub-tabs {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+    scrollbar-width: none;
+}
 
-        body.light-mode .theme-toggle:hover {
-            background: rgba(0, 0, 0, 0.15);
-            border-color: #1a73e8;
-        }
+.sub-tabs::-webkit-scrollbar {
+    display: none;
+}
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            position: relative;
-        }
+.sub-tab {
+    flex: 1;
+    min-width: 90px;
+    padding: 12px 15px;
+    background: #151515;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: #888;
+    cursor: pointer;
+    transition: .25s;
+    white-space: nowrap;
+}
 
-        .top-right-buttons {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            z-index: 1000;
-        }
+.sub-tab:hover {
+    color: white;
+    border-color: #1a73e8;
+}
 
-        .social-btn {
-            width: 44px;
-            height: 44px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            border: 2px solid rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
+.sub-tab.active {
+    background: #1a73e8;
+    color: white;
+    border-color: #1a73e8;
+}
 
-        .social-btn:hover {
-            transform: scale(1.1);
-        }
+/* SUB TAB CONTENT */
+.sub-content {
+    display: none;
+    background: #111;
+    border: 1px solid #292929;
+    border-radius: 12px;
+    padding: 20px;
+    min-height: 150px;
+}
 
-        .social-btn.tiktok:hover {
-            border-color: #ff0050;
-            color: #ff0050;
-            box-shadow: 0 0 20px rgba(255, 0, 80, 0.3);
-        }
+.sub-content.active {
+    display: block;
+}
 
-        .social-btn.youtube:hover {
-            border-color: #ff0000;
-            color: #ff0000;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-        }
+.sub-content h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #1a73e8;
+}
 
-        .social-btn.discord:hover {
-            border-color: #5865f2;
-            color: #5865f2;
-            box-shadow: 0 0 20px rgba(88, 101, 242, 0.3);
-        }
+.sub-content p {
+    color: #888;
+    font-size: 14px;
+}
 
-        .theme-toggle {
-            width: 44px;
-            height: 44px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            border: 2px solid rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+/* SCRIPT LINK BUTTON */
+.script-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 15px;
+    margin-top: 15px;
+    background: #151515;
+    border: 1px solid #1a73e8;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    transition: .3s;
+}
 
-        .theme-toggle:hover {
-            transform: scale(1.1);
-            border-color: #1a73e8;
-        }
+.script-link:hover {
+    background: #1a73e8;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px #1a73e855;
+}
 
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            border: 2px solid rgba(255, 255, 255, 0.05);
-            border-radius: 50px;
-            padding: 0.6rem 1.2rem;
-            color: #fff;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: none;
-            z-index: 1000;
-            font-size: 0.9rem;
-            align-items: center;
-            gap: 0.5rem;
-        }
+.script-link .link-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-        .back-button:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #1a73e8;
-            transform: translateX(-3px);
-        }
+.script-link .link-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: #1a73e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
 
-        .back-button.show {
-            display: flex;
-        }
+.script-link .link-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
 
-        .back-button i {
-            font-size: 1rem;
-        }
+.script-link .link-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+}
 
-        .header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            padding-top: 20px;
-        }
+.script-link .link-desc {
+    font-size: 12px;
+    color: #888;
+}
 
-        .header h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(255, 200, 0, 0.2);
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            transition: all 0.4s ease;
-        }
+.script-link .link-arrow {
+    color: #888;
+    flex-shrink: 0;
+}
 
-        .header h1 .brand-name {
-            background: none;
-            padding: 0;
-            border-radius: 0;
-            color: #fff;
-            display: inline-block;
-            line-height: 1.3;
-            text-shadow: 0 2px 10px rgba(255, 107, 53, 0.3);
-            transition: all 0.4s ease;
-        }
+.script-link:hover .link-arrow,
+.script-link:hover .link-desc {
+    color: white;
+}
 
-        .header p {
-            color: #8892b0;
-            font-size: 1.15rem;
-            margin-top: 0.5rem;
-            font-weight: 300;
-            transition: all 0.4s ease;
-        }
+/* FOOTER */
+.footer {
+    text-align: center;
+    color: #555;
+    margin-top: 30px;
+    font-size: 13px;
+}
 
-        .tabs-container {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-            transition: all 0.4s ease;
-        }
+/* LIGHT MODE */
+body.light {
+    background: #f4f6fb;
+    color: #111;
+}
 
-        .tabs-container.hidden {
-            display: none;
-        }
+body.light .brand-name {
+    color: #111;
+    text-shadow: none;
+}
 
-        .main-tab {
-            background: linear-gradient(135deg, #1a73e8, #0d47a1);
-            border: none;
-            border-radius: 50px;
-            padding: 0.8rem 2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(26, 115, 232, 0.3);
-            flex: 0 1 auto;
-            min-width: 180px;
-        }
+body.light .top-right a,
+body.light .theme-toggle {
+    background: #ddd;
+    color: #111;
+}
 
-        .main-tab:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(26, 115, 232, 0.5);
-        }
+body.light .roblox-btn {
+    background: white;
+    color: #111;
+}
 
-        .main-tab:active {
-            transform: scale(0.97);
-        }
+body.light .back-btn {
+    background: #eee;
+    color: #333;
+}
 
-        .main-tab.active {
-            background: linear-gradient(135deg, #1565c0, #0a3d7a);
-            box-shadow: 0 8px 32px rgba(26, 115, 232, 0.5);
-        }
+body.light .sub-tab {
+    background: #e5e5e5;
+    color: #555;
+}
 
-        .main-tab .tab-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: 0.5px;
-        }
+body.light .sub-tab.active {
+    background: #1a73e8;
+    color: white;
+}
 
-        .sub-categories {
-            display: none;
-            grid-template-columns: 1fr;
-            max-width: 500px;
-            margin: 0 auto;
-            animation: fadeIn 0.5s ease;
-            gap: 1rem;
-        }
+body.light .sub-content {
+    background: white;
+    border-color: #ddd;
+}
 
-        .sub-categories.show {
-            display: grid;
-        }
+body.light .script-link {
+    background: #f7f7f7;
+    color: #111;
+}
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+body.light .script-link .link-title {
+    color: #111;
+}
 
-        .category-group {
-            background: #1a1a2e;
-            border: 2px solid rgba(255, 255, 255, 0.05);
-            border-radius: 18px;
-            padding: 1.5rem;
-            transition: all 0.4s ease;
-        }
+body.light .script-link .link-desc {
+    color: #777;
+}
 
-        .category-group:hover {
-            border-color: #1a73e8;
-            box-shadow: 0 8px 32px rgba(26, 115, 232, 0.15);
-        }
+body.light .script-link .link-arrow {
+    color: #777;
+}
 
-        .category-group .category-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #fff;
-            text-align: center;
-            margin-bottom: 0.3rem;
-            transition: all 0.4s ease;
-        }
+body.light .script-link:hover {
+    background: #1a73e8;
+}
 
-        .category-group .category-subtitle {
-            font-size: 0.9rem;
-            color: #1a73e8;
-            text-align: center;
-            margin-bottom: 1rem;
-            font-weight: 400;
-            opacity: 0.8;
-        }
+body.light .script-link:hover .link-title,
+body.light .script-link:hover .link-desc,
+body.light .script-link:hover .link-arrow {
+    color: white;
+}
 
-        .sub-category-item {
-            background: #252545;
-            border: 2px solid rgba(255, 255, 255, 0.05);
-            border-radius: 14px;
-            padding: 1rem 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            margin-top: 0.8rem;
-        }
+/* MOBILE */
+@media(max-width:600px) {
+    body {
+        padding: 15px 10px 25px;
+    }
 
-        .sub-category-item:first-child {
-            margin-top: 0;
-        }
+    .topbar {
+        gap: 5px;
+        margin-bottom: 60px;
+    }
 
-        .sub-category-item:hover {
-            border-color: #1a73e8;
-            transform: translateX(5px);
-            box-shadow: 0 4px 20px rgba(26, 115, 232, 0.2);
-            background: #2f2f55;
-        }
+    .brand {
+        gap: 4px;
+    }
 
-        .sub-category-item .name {
-            font-weight: 600;
-            color: #fff;
-            font-size: 1.1rem;
-            transition: all 0.4s ease;
-        }
+    .brand-name {
+        font-size: 18px;
+    }
 
-        .sub-category-item .link-icon {
-            display: inline-block;
-            margin-left: 0.8rem;
-            color: #1a73e8;
-            font-size: 0.9rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+    .brand-author {
+        font-size: 9px;
+    }
 
-        .sub-category-item:hover .link-icon {
-            opacity: 1;
-        }
+    .top-right {
+        gap: 4px;
+    }
 
-        .footer-note {
-            margin-top: 3rem;
-            text-align: center;
-            color: #495670;
-            font-size: 0.9rem;
-            letter-spacing: 0.3px;
-            transition: all 0.4s ease;
-        }
+    .top-right a,
+    .theme-toggle {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
 
-        .footer-note i {
-            color: #1a73e8;
-            margin: 0 4px;
-        }
+    .sub-tab {
+        padding: 11px 12px;
+    }
 
-        @media (max-width: 640px) {
-            .header {
-                padding-top: 10px;
-            }
-            .header h1 {
-                font-size: 2.2rem;
-            }
-            .top-right-buttons {
-                top: 10px;
-                right: 10px;
-                gap: 6px;
-            }
-            .social-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 1rem;
-            }
-            .theme-toggle {
-                width: 36px;
-                height: 36px;
-                font-size: 1rem;
-            }
-            .back-button {
-                top: 10px;
-                left: 10px;
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
-            .tabs-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.8rem;
-            }
-            .main-tab {
-                min-width: unset;
-                width: 80%;
-                padding: 0.7rem 1.5rem;
-            }
-            .main-tab .tab-title {
-                font-size: 1rem;
-            }
-            .sub-categories {
-                max-width: 100%;
-                padding: 0 0.5rem;
-            }
-            .category-group {
-                padding: 1rem;
-            }
-            .category-group .category-title {
-                font-size: 1.1rem;
-            }
-            .sub-category-item {
-                padding: 0.8rem 1rem;
-            }
-            .sub-category-item .name {
-                font-size: 1rem;
-            }
-        }
-    </style>
+    .sub-content {
+        padding: 15px;
+    }
+}
+</style>
 </head>
+
 <body>
-    <div class="top-right-buttons">
-        <a href="https://www.tiktok.com/@huyscriptth?_r=1&_t=ZS-97VT8tTzfnA" target="_blank" class="social-btn tiktok" aria-label="TikTok">
+
+<!-- TOPBAR -->
+<div class="topbar">
+
+    <div class="brand">
+        <span class="brand-name">Bear Hub</span>
+        <span class="brand-author">by Quang Huy</span>
+    </div>
+
+    <div class="top-right">
+
+        <a href="https://www.tiktok.com/@huyscriptth" target="_blank" rel="noopener">
             <i class="fab fa-tiktok"></i>
         </a>
-        <a href="https://youtube.com/@huyscriptth?si=mCjD7RwqJHOZR5We" target="_blank" class="social-btn youtube" aria-label="YouTube">
+
+        <a href="https://youtube.com/@huyscriptth" target="_blank" rel="noopener">
             <i class="fab fa-youtube"></i>
         </a>
-        <a href="https://discord.gg/rW6yuRqAu" target="_blank" class="social-btn discord" aria-label="Discord">
+
+        <a href="https://discord.gg/rW6yuRqAu" target="_blank" rel="noopener">
             <i class="fab fa-discord"></i>
         </a>
-        <button class="theme-toggle" id="themeToggle" aria-label="Chuyển chế độ sáng/tối">
+
+        <button class="theme-toggle" id="themeToggle">
             <i class="fas fa-moon"></i>
         </button>
+
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- MAIN PAGE -->
+    <div id="mainPage">
+
+        <button class="roblox-btn" id="openRoblox">
+            <img src="https://store-images.s-microsoft.com/image/apps.57357.14294982842551334.bc68eb2f-01f8-451f-85fc-6428e4bd5d81.c1bf4bb1-19cd-48cf-b723-0bff74e4ecf3" alt="Roblox">
+            <span>Roblox</span>
+        </button>
+
     </div>
 
-    <button class="back-button" id="backButton">
-        <i class="fas fa-arrow-left"></i> Quay lại
-    </button>
+    <!-- ROBLOX PAGE -->
+    <div id="robloxPage">
 
-    <div class="container">
-        <div class="header">
-            <h1>
-                <span class="brand-name">Bear Hub</span>
-            </h1>
-            <p>Khám phá các script mới tại đây</p>
+        <button class="back-btn" id="backBtn">
+            <i class="fas fa-arrow-left"></i> Quay lại
+        </button>
+
+        <!-- 3 SUB TABS -->
+        <div class="sub-tabs">
+
+            <button class="sub-tab active" data-tab="delta">
+                <i class="fas fa-bolt"></i> Delta
+            </button>
+
+            <button class="sub-tab" data-tab="bearhub">
+                <i class="fas fa-code"></i> Script Bear Hub
+            </button>
+
+            <button class="sub-tab" data-tab="bloxfruits">
+                <i class="fas fa-gamepad"></i> Script Blox Fruits
+            </button>
+
         </div>
 
-        <div class="tabs-container" id="tabsContainer">
-            <button class="main-tab active" data-tab="delta-moi-nhat">
-                <span class="tab-title">Delta mới nhất</span>
-            </button>
-            <button class="main-tab" data-tab="script-tong-hop">
-                <span class="tab-title">Script Tổng hợp</span>
-            </button>
-            <button class="main-tab" data-tab="blox-fruit">
-                <span class="tab-title">Script Blox Fruit</span>
-            </button>
+        <!-- DELTA -->
+        <div class="sub-content active" id="tab-delta">
+            <h2>Delta</h2>
+            <p>Danh sách Delta</p>
+
+            <a class="script-link"
+               href="https://link4sub.com/63eheezb"
+               target="_blank"
+               rel="noopener">
+
+                <div class="link-left">
+                    <div class="link-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+
+                    <div class="link-text">
+                        <span class="link-title">Delta QT V2.747</span>
+                        <span class="link-desc">Bấm để mở liên kết</span>
+                    </div>
+                </div>
+
+                <i class="fas fa-arrow-up-right-from-square link-arrow"></i>
+            </a>
+
         </div>
 
-        <div class="sub-categories" id="subCategories"></div>
+        <!-- SCRIPT BEAR HUB -->
+        <div class="sub-content" id="tab-bearhub">
+            <h2>Script Bear Hub</h2>
+            <p>Danh sách Script Bear Hub</p>
 
-        <div class="footer-note">
-            <i class="fas fa-skull"></i> Hay chọn script bạn muốn
+            <!-- BEAR HUB TỔNG HỢP -->
+            <a class="script-link"
+               href="https://link4sub.com/bearhubth"
+               target="_blank"
+               rel="noopener">
+
+                <div class="link-left">
+                    <div class="link-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+
+                    <div class="link-text">
+                        <span class="link-title">Bear Hub Tổng hợp</span>
+                        <span class="link-desc">Bấm để mở liên kết</span>
+                    </div>
+                </div>
+
+                <i class="fas fa-arrow-up-right-from-square link-arrow"></i>
+            </a>
+
         </div>
+
+        <!-- SCRIPT BLOX FRUITS -->
+        <div class="sub-content" id="tab-bloxfruits">
+            <h2>Script Blox Fruits</h2>
+            <p>Nội dung Script Blox Fruits sẽ hiển thị tại đây.</p>
+        </div>
+
     </div>
 
-    <script>
-        (function() {
-            const tabs = document.querySelectorAll('.main-tab');
-            const tabsContainer = document.getElementById('tabsContainer');
-            const subContainer = document.getElementById('subCategories');
-            const backButton = document.getElementById('backButton');
-            const themeToggle = document.getElementById('themeToggle');
-            let currentTab = 'delta-moi-nhat';
-            let isInsideTab = false;
-            let isDarkMode = true;
+    <div class="footer">
+        Bear Hub • by Quang Huy
+    </div>
 
-            const tabContent = {
-                'delta-moi-nhat': {
-                    title: 'Delta mới nhất',
-                    subtitle: 'Delta X VNG',
-                    groups: [
-                        {
-                            name: 'Delta X VNG',
-                            items: [
-                                { name: 'Delta X VNG V2.727', url: 'https://link4sub.com/mBAvuidZZz' },
-                                { name: 'Delta X QT V2.725', url: 'https://link4sub.com/ovjhqOCrDE' },
-                                { name: 'Delta X QT login', url: 'https://link4sub.com/W0pX6oQxEO' },
-                                { name: 'Delta X IOS', url: 'https://link4sub.com/qvpehwMAKk' }
-                            ]
-                        }
-                    ]
-                },
-                'script-tong-hop': {
-                    title: 'Script Tổng hợp',
-                    subtitle: 'Script Tổng hợp ngon nhất',
-                    items: [
-                        {
-                            name: 'Bear Hub Premium',
-                            url: 'https://link4sub.com/Nkcwg6fJOn'
-                        }
-                    ]
-                },
-                'blox-fruit': {
-                    title: 'Script Blox Fruit',
-                    subtitle: 'Tổng hợp script Blox Fruit',
-                    groups: [
-                        {
-                            name: 'Script Farm',
-                            items: [
-                                { name: 'Bear Hub V1', url: 'https://link4sub.com/XanfieMpfu' },
-                                { name: 'Bear Hub V2', url: 'https://link4sub.com/reuWXUzeC5' },
-                                { name: 'Bear Hub V3', url: 'https://link4sub.com/2KbqBEOdMY' },
-                                { name: 'Bear Hub V4', url: 'https://link4sub.com/BNCWbzDGGr' },
-                                { name: 'Bear Hub V5', url: 'https://link4sub.com/Pjx3zojkvk' },
-                                { name: 'Bear Hub V6', url: 'https://link4sub.com/2vu1tmvWr6' },
-                                { name: 'Quantum Onyx', url: 'https://link4sub.com/ELyWdkzruo' },
-                                { name: 'OMG Hub', url: 'https://link4sub.com/R3EK5j4cQX' }
-                            ]
-                        },
-                        {
-                            name: 'Script PvP',
-                            items: [
-                                { name: 'Hermanos\'Dev|PVP', url: 'https://link4sub.com/rHCnbd9HQ6' },
-                                { name: 'CentuDox.xyz', url: 'https://link4sub.com/l6BurZ3RJb' },
-                                { name: 'MENU', url: 'https://link4sub.com/dBFPm5DApw' },
-                                { name: 'Menu 1', url: 'https://link4sub.com/vOYWgz7Qtu' },
-                                { name: 'Menu 2', url: 'https://link4sub.com/IEJyUDSRNA' }
-                            ]
-                        }
-                    ]
-                }
-            };
+</div>
 
-            function renderSubCategories(tabId) {
-                if (!subContainer) return;
-                const content = tabContent[tabId];
-                if (!content) return;
+<script>
+/* OPEN ROBLOX PAGE */
+const mainPage = document.getElementById("mainPage");
+const robloxPage = document.getElementById("robloxPage");
 
-                subContainer.innerHTML = '';
+document.getElementById("openRoblox").onclick = () => {
+    mainPage.style.display = "none";
+    robloxPage.style.display = "block";
+};
 
-                if (content.groups) {
-                    let hasItems = false;
-                    content.groups.forEach(group => {
-                        if (group.items.length === 0) return;
-                        hasItems = true;
+/* BACK TO MAIN */
+document.getElementById("backBtn").onclick = () => {
+    robloxPage.style.display = "none";
+    mainPage.style.display = "block";
+};
 
-                        const categoryGroup = document.createElement('div');
-                        categoryGroup.className = 'category-group';
+/* SUB TAB SWITCH */
+const subTabs = document.querySelectorAll(".sub-tab");
+const subContents = document.querySelectorAll(".sub-content");
 
-                        const title = document.createElement('div');
-                        title.className = 'category-title';
-                        title.textContent = group.name;
+subTabs.forEach(tab => {
+    tab.onclick = () => {
+        subTabs.forEach(t => t.classList.remove("active"));
+        subContents.forEach(c => c.classList.remove("active"));
 
-                        const subtitle = document.createElement('div');
-                        subtitle.className = 'category-subtitle';
-                        subtitle.textContent = content.subtitle;
+        tab.classList.add("active");
 
-                        categoryGroup.appendChild(title);
-                        categoryGroup.appendChild(subtitle);
+        const target = document.getElementById("tab-" + tab.dataset.tab);
+        if (target) {
+            target.classList.add("active");
+        }
+    };
+});
 
-                        group.items.forEach(itemData => {
-                            const item = document.createElement('a');
-                            item.className = 'sub-category-item';
-                            item.href = itemData.url;
-                            item.target = '_blank';
-                            item.innerHTML = `
-                                <span class="name">${itemData.name}</span>
-                                <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
-                            `;
+/* THEME */
+const themeToggle = document.getElementById("themeToggle");
 
-                            item.addEventListener('click', function(e) {
-                                console.log(`Chuyển đến ${itemData.name}`);
-                            });
+themeToggle.onclick = () => {
+    document.body.classList.toggle("light");
 
-                            categoryGroup.appendChild(item);
-                        });
+    const icon = themeToggle.querySelector("i");
 
-                        subContainer.appendChild(categoryGroup);
-                    });
+    icon.className = document.body.classList.contains("light")
+        ? "fas fa-sun"
+        : "fas fa-moon";
+};
+</script>
 
-                    if (!hasItems) {
-                        const emptyMessage = document.createElement('div');
-                        emptyMessage.className = 'category-group';
-                        emptyMessage.innerHTML = `
-                            <div class="category-title" style="color: #8892b0; font-size: 1rem; font-weight: 400;">
-                                <i class="fas fa-inbox"></i> Chưa có script nào
-                            </div>
-                        `;
-                        subContainer.appendChild(emptyMessage);
-                    }
-                } else if (content.items) {
-                    if (content.items.length === 0) {
-                        const emptyMessage = document.createElement('div');
-                        emptyMessage.className = 'category-group';
-                        emptyMessage.innerHTML = `
-                            <div class="category-title" style="color: #8892b0; font-size: 1rem; font-weight: 400;">
-                                <i class="fas fa-inbox"></i> Chưa có script nào
-                            </div>
-                        `;
-                        subContainer.appendChild(emptyMessage);
-                        return;
-                    }
-
-                    const categoryGroup = document.createElement('div');
-                    categoryGroup.className = 'category-group';
-
-                    const title = document.createElement('div');
-                    title.className = 'category-title';
-                    title.textContent = content.title;
-
-                    const subtitle = document.createElement('div');
-                    subtitle.className = 'category-subtitle';
-                    subtitle.textContent = content.subtitle;
-
-                    categoryGroup.appendChild(title);
-                    categoryGroup.appendChild(subtitle);
-
-                    content.items.forEach(itemData => {
-                        const item = document.createElement('a');
-                        item.className = 'sub-category-item';
-                        item.href = itemData.url;
-                        item.target = '_blank';
-                        item.innerHTML = `
-                            <span class="name">${itemData.name}</span>
-                            <span class="link-icon"><i class="fas fa-arrow-right"></i></span>
-                        `;
-
-                        item.addEventListener('click', function(e) {
-                            console.log(`Chuyển đến ${itemData.name}`);
-                        });
-
-                        categoryGroup.appendChild(item);
-                    });
-
-                    subContainer.appendChild(categoryGroup);
-                }
-            }
-
-            function enterTab(tabId) {
-                isInsideTab = true;
-                tabsContainer.classList.add('hidden');
-                backButton.classList.add('show');
-                
-                tabs.forEach(t => t.classList.remove('active'));
-                const activeTab = document.querySelector(`[data-tab="${tabId}"]`);
-                if (activeTab) activeTab.classList.add('active');
-                
-                currentTab = tabId;
-                renderSubCategories(tabId);
-                subContainer.classList.add('show');
-            }
-
-            function exitTab() {
-                isInsideTab = false;
-                tabsContainer.classList.remove('hidden');
-                backButton.classList.remove('show');
-                subContainer.classList.remove('show');
-            }
-
-            function toggleTheme() {
-                isDarkMode = !isDarkMode;
-                document.body.classList.toggle('light-mode', !isDarkMode);
-                
-                const icon = themeToggle.querySelector('i');
-                if (isDarkMode) {
-                    icon.className = 'fas fa-moon';
-                } else {
-                    icon.className = 'fas fa-sun';
-                }
-            }
-
-            subContainer.classList.remove('show');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const tabId = this.dataset.tab;
-                    if (isInsideTab) {
-                        exitTab();
-                    }
-                    enterTab(tabId);
-                });
-            });
-
-            backButton.addEventListener('click', function() {
-                exitTab();
-            });
-
-            themeToggle.addEventListener('click', toggleTheme);
-
-        })();
-    </script>
 </body>
 </html>
